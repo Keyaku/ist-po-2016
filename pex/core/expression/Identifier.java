@@ -1,6 +1,6 @@
 package pex.core.expression;
 
-public class Identifier {
+public class Identifier extends Expression {
 	private String _name = "";
 
 	public Identifier(String value) {
