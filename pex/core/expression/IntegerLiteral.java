@@ -11,7 +11,7 @@ public class IntegerLiteral extends Literal {
 	}
 
 	public String getAsText() {
-		return "" + _value;
+		return Integer.toString(_value);
 	}
 
 	/**
