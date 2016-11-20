@@ -2,6 +2,7 @@ package pex.core;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Collection;
 
 import pex.AppIO;
 
@@ -12,11 +13,10 @@ import pex.core.expression.Literal;
 
 public class Program {
 	private String _name = "";
-	private List<Expression> _exps;
+	private List<Expression> _exps = new ArrayList<Expression>();
 
 	public Program(String name) {
 		_name = name;
-		_exps = new ArrayList<Expression>();
 	}
 
 	public String getName() {
@@ -25,6 +25,15 @@ public class Program {
 
 	public void add(int idx, Expression exp) {
 		_exps.add(idx, exp);
+	}
+
+	public void replace(int idx, Expression exp) {
+		_exps.set(idx, exp);
+	}
+
+	public void set(Collection<Expression> exps) {
+		_exps.clear();
+		_exps.addAll(exps);
 	}
 
 	public void setIdentifierValue(Identifier id, Literal value) {
