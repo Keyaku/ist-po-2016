@@ -21,6 +21,6 @@ public class Identifier {
 	*/
 	public Literal evaluate() {
 		// FIXME
-		return "";
+		return null;
 	}
 }

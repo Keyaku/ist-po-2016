@@ -18,6 +18,6 @@ public class Mod extends BinaryExpression {
 
 	public Literal evaluate() {
 		// FIXME
-		return "";
+		return null;
 	}
 }

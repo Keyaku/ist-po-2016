@@ -19,6 +19,6 @@ public class If extends TernaryExpression {
 
 	public Literal evaluate() {
 		// FIXME
-		return "";
+		return null;
 	}
 }

@@ -21,6 +21,6 @@ public class Seq extends VariadicExpression {
 
 	public Literal evaluate() {
 		// FIXME
-		return "";
+		return null;
 	}
 }

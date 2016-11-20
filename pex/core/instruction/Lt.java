@@ -18,6 +18,6 @@ public class Lt extends BinaryExpression {
 
 	public Literal evaluate() {
 		// FIXME
-		return "";
+		return null;
 	}
 }

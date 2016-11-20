@@ -25,6 +25,6 @@ public class Print extends VariadicExpression{
 
 	public Literal evaluate() {
 		// FIXME
-		return "";
+		return null;
 	}
 }

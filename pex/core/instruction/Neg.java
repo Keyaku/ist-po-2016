@@ -15,6 +15,6 @@ public class Neg extends UnaryExpression {
 
 	public Literal evaluate() {
 		// FIXME
-		return "";
+		return null;
 	}
 }

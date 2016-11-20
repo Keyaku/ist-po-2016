@@ -15,6 +15,6 @@ public class Not extends UnaryExpression {
 
 	public Literal evaluate() {
 		// FIXME
-		return "";
+		return null;
 	}
 }

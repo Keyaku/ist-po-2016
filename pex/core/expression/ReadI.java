@@ -11,6 +11,6 @@ public class ReadI extends CompositeExpression {
 
 	public Literal evaluate() {
 		// FIXME
-		return "";
+		return null;
 	}
 }

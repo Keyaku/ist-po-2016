@@ -19,6 +19,6 @@ public class Call extends UnaryExpression {
 
 	public Literal evaluate() {
 		// FIXME
-		return "";
+		return null;
 	}
 }
