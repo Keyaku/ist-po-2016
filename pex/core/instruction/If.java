@@ -17,7 +17,7 @@ public class If extends TernaryExpression {
 			")";
 	}
 
-	public String evaluate() {
+	public Literal evaluate() {
 		// FIXME
 		return "";
 	}

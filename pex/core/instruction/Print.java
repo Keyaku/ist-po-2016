@@ -23,7 +23,7 @@ public class Print extends VariadicExpression{
 		return result + ")";
 	}
 
-	public String evaluate() {
+	public Literal evaluate() {
 		// FIXME
 		return "";
 	}

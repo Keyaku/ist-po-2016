@@ -19,7 +19,7 @@ public class Set extends BinaryExpression {
 			")";
 	}
 
-	public String evaluate() {
+	public Literal evaluate() {
 		// FIXME
 		return "";
 	}

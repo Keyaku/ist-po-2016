@@ -16,7 +16,7 @@ public class Gt extends BinaryExpression {
 			")";
 	}
 
-	public String evaluate() {
+	public Literal evaluate() {
 		// FIXME
 		return "";
 	}

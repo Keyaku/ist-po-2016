@@ -16,7 +16,7 @@ public class Add extends BinaryExpression {
 			")";
 	}
 
-	public String evaluate() {
+	public Literal evaluate() {
 		// FIXME
 		return "";
 	}

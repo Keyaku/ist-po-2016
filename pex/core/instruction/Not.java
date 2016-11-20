@@ -13,7 +13,7 @@ public class Not extends UnaryExpression {
 		return "Not(" + getArgument().getAsText() + ")";
 	}
 
-	public String evaluate() {
+	public Literal evaluate() {
 		// FIXME
 		return "";
 	}

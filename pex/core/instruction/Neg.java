@@ -13,7 +13,7 @@ public class Neg extends UnaryExpression {
 		return "Neg(" + getArgument().getAsText() + ")";
 	}
 
-	public String evaluate() {
+	public Literal evaluate() {
 		// FIXME
 		return "";
 	}
