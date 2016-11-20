@@ -1,7 +1,7 @@
 package pex.core.expression;
 
 public abstract class TernaryExpression extends CompositeExpression {
-	private Expression _arg1, _arg2;
+	private Expression _arg1, _arg2, _arg3;
 
 	/**
 	** TernaryExpression constructor, abstract enough to gather 3 arguments.
