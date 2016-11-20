@@ -7,12 +7,11 @@ import pex.AppIO;
 // FIXME: remove these if we're to put Expression right under core/
 import pex.core.expression.*;
 
-public class Print extends VariadicExpression{
-	private AppIO _io;
+public class Print extends VariadicExpression {
+	private AppIO _io; // FIXME: what to do with this?
 
-	public Print(List<Expression> args, AppIO io) {
+	public Print(List<Expression> args) {
 		super(args);
-		_io = io;
 	}
 
 	public String getAsText() {
