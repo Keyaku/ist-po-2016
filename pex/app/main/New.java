@@ -1,6 +1,6 @@
 package pex.app.main;
 
-import pex.core.Interpreter;
+import pex.AppIO;
 
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Display;
@@ -10,11 +10,11 @@ import pt.utl.ist.po.ui.InputBoolean;
 /**
  * Command for creating a new interpreter.
  */
-public class New extends Command<Interpreter> {
+public class New extends Command<AppIO> {
     /**
      * @param receiver
      */
-    public New(Interpreter receiver) {
+    public New(AppIO receiver) {
         super(Label.NEW, receiver);
     }
 

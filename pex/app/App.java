@@ -4,7 +4,6 @@ package pex.app;
 import pex.AppIO;
 import pex.parser.ParserException;
 import pex.app.main.MainMenu;
-import pex.core.Interpreter;
 
 import pt.utl.ist.po.ui.Form;
 import pt.utl.ist.po.ui.InputString;
@@ -19,7 +18,7 @@ public class App implements AppIO {
     // Add fileds here if needed
 
     public App() {
-	// add core here if needed
+		// FIXME: add core here if needed
     }
 
     /**
@@ -28,7 +27,7 @@ public class App implements AppIO {
      * @param str the string to write
      **/
     public void println(String str) {
-        // add code here
+        // FIXME: add code here
     }
 
     /**
@@ -37,7 +36,8 @@ public class App implements AppIO {
      * @return the string written by the user.
      **/
     public String readString() {
-        // add code here
+        // FIXME: add code here
+		return "";
     }
 
     /**
@@ -46,7 +46,8 @@ public class App implements AppIO {
      * @return the number written by the user.
      **/
     public int readInteger() {
-        // add code here
+        // FIXME: add code here
+		return 0;
     }
 
     /**
@@ -58,16 +59,17 @@ public class App implements AppIO {
         String datafile = System.getProperty("import"); //$NON-NLS-1$
         if (datafile != null) {
             try {
-                //FIXME read import file into core object (use Parser instance)
+                // FIXME: read import file into core object (use Parser instance)
             } catch (ParserException e) {
                 // no behavior described: just present the problem
                 e.printStackTrace();
             }
         }
 
-		Interpreter interpreter = new Interpreter(this);
+		// FIXME: properly set this up.
+		AppIO app = new App();
 
-        MainMenu menu = new MainMenu(interpreter);
+        MainMenu menu = new MainMenu(app);
         menu.open();
     }
 }

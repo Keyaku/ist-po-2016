@@ -3,7 +3,7 @@ package pex.app.main;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-import pex.core.Interpreter;
+import pex.AppIO;
 
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Display;
@@ -14,11 +14,11 @@ import pt.utl.ist.po.ui.InvalidOperation;
 /**
  * Open existing interpreter.
  */
-public class Open extends Command<Interpreter> {
+public class Open extends Command<AppIO> {
     /**
      * @param receiver
      */
-    public Open(Interpreter receiver) {
+    public Open(AppIO receiver) {
         super(Label.OPEN, receiver);
     }
 

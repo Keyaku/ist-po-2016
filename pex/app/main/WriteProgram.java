@@ -2,7 +2,7 @@ package pex.app.main;
 
 import java.io.IOException;
 
-import pex.core.Interpreter;
+import pex.AppIO;
 
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Display;
@@ -13,11 +13,11 @@ import pt.utl.ist.po.ui.InvalidOperation;
 /**
  * Write (save) program to file.
  */
-public class WriteProgram extends Command<Interpreter> {
+public class WriteProgram extends Command<AppIO> {
     /**
      * @param receiver
      */
-    public WriteProgram(Interpreter receiver) {
+    public WriteProgram(AppIO receiver) {
         super(Label.WRITE_PROGRAM, receiver);
     }
 
