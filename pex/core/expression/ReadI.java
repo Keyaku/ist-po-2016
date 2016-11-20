@@ -1,5 +1,7 @@
 package pex.core.expression;
 
+import pex.AppIO;
+
 public class ReadI extends CompositeExpression {
 	private AppIO _io;
 

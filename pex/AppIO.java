@@ -6,7 +6,7 @@ package pex;
  * that the application uses.
  **/
 
-interface AppIO {
+public interface AppIO {
 
     /**
      * Writes a string to be presented to the user.

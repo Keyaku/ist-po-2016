@@ -4,6 +4,7 @@ package pex.app;
 import pex.AppIO;
 import pex.parser.ParserException;
 import pex.app.main.MainMenu;
+import pex.core.Interpreter;
 
 import pt.utl.ist.po.ui.Form;
 import pt.utl.ist.po.ui.InputString;
@@ -53,7 +54,7 @@ public class App implements AppIO {
      */
     public static void main(String[] args) {
         //FIXME create main core object
-        
+
         String datafile = System.getProperty("import"); //$NON-NLS-1$
         if (datafile != null) {
             try {
@@ -63,8 +64,10 @@ public class App implements AppIO {
                 e.printStackTrace();
             }
         }
-        
-        MainMenu menu = new MainMenu(/* Receiver Entity*/);
+
+		Interpreter interpreter = new Interpreter(this);
+
+        MainMenu menu = new MainMenu(interpreter);
         menu.open();
     }
 }

@@ -1,6 +1,14 @@
 package pex.core;
 
 import java.util.List;
+import java.util.ArrayList;
+
+import pex.AppIO;
+
+// FIXME: remove these if we're to put Expression right under core/
+import pex.core.expression.*;
+import pex.core.expression.Identifier;
+import pex.core.expression.Literal;
 
 public class Program {
 	private String _name = "";

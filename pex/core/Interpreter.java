@@ -2,6 +2,13 @@ package pex.core;
 
 import java.util.List;
 
+import pex.AppIO;
+
+// FIXME: remove these if we're to put Expression right under core/
+import pex.core.expression.*;
+import pex.core.expression.Identifier;
+import pex.core.expression.Literal;
+
 public class Interpreter {
 	private AppIO _io;
 	private List<Program> _progs;
@@ -31,7 +38,7 @@ public class Interpreter {
 		}
 		return NULL;
 	}
-	
+
 	public AppIO getAppIO() {
 		return _io;
 	}

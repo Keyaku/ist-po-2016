@@ -1,7 +1,6 @@
 package pex.app.main;
 
 import pex.core.Interpreter;
-import pex.core.Program;
 
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Menu;
@@ -15,16 +14,16 @@ public class MainMenu extends Menu {
     /**
      * @param receiver The instanced Interpreter for this session
      */
-    public MainMenu(Interpreter interpreter, Program program) {
+    public MainMenu(Interpreter receiver) {
         super(Label.TITLE,
             new Command<?>[] { //
-				new New(interpreter),         // Command for creating a new interpreter.
-				new Open(interpreter),        // Open existing interpreter.
-				new Save(interpreter),        // Save to file under current name.
-				new NewProgram(program),      // Create new program.
-				new ReadProgram(program),     // Read existing program.
-				new WriteProgram(program),    // Write (save) program to file.
-				new EditProgram(interpreter), // Open menu for managing programs.
+				new New(receiver),         // Command for creating a new interpreter.
+				new Open(receiver),        // Open existing interpreter.
+				new Save(receiver),        // Save to file under current name.
+				new NewProgram(receiver),      // Create new program.
+				new ReadProgram(receiver),     // Read existing program.
+				new WriteProgram(receiver),    // Write (save) program to file.
+				new EditProgram(receiver), // Open menu for managing programs.
             }
 		);
     }

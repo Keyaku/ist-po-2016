@@ -10,6 +10,9 @@ import java.util.Collection;
 import java.util.ArrayList;
 
 import pex.core.*;
+// FIXME: remove these if we're to put Expression right under core/
+import pex.core.expression.*;
+import pex.core.instruction.*;
 
 public class NewParser {
 

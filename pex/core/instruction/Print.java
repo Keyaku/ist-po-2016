@@ -1,6 +1,11 @@
-package pex.core.function;
+package pex.core.instruction;
+
+import java.util.List;
 
 import pex.AppIO;
+
+// FIXME: remove these if we're to put Expression right under core/
+import pex.core.expression.*;
 
 public class Print extends VariadicExpression{
 	private AppIO _io;
