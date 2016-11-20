@@ -36,7 +36,7 @@ public class Interpreter {
 				return p;
 			}
 		}
-		return NULL;
+		return null;
 	}
 
 	public AppIO getAppIO() {
