@@ -10,7 +10,6 @@ import pt.utl.ist.po.ui.Display;
  * Show program (present code).
  */
 public class ShowProgram extends ProgramCommand {
-
     /**
      * @param receiver
      */
@@ -21,6 +20,8 @@ public class ShowProgram extends ProgramCommand {
     /** @see pt.utl.ist.po.ui.Command#execute() */
     @Override
     public final void execute() {
-        //FIXME implement
+		Display d = new Display(title());
+		d.addNewLine(entity().getAsText());
+		d.display();
     }
 }
