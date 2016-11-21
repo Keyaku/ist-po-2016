@@ -26,7 +26,7 @@ public class EditProgram extends Command<App> {
 
     /** @see pt.utl.ist.po.ui.Command#execute() */
     @Override
-    public final void execute() throws InvalidOperation {
+    public final void execute() {
 		Form f = new Form(title());
 		InputString is = new InputString(f, Message.requestProgramId());
 		f.parse();
@@ -34,7 +34,10 @@ public class EditProgram extends Command<App> {
 
 		Program p = entity().getInterpreter().getProgram(programId);
 		if (p == null) {
-			throw new InvalidOperation(Message.noSuchProgram(programId));
+			Display d = new Display();
+			d.addNewLine(Message.noSuchProgram(programId));
+			d.display();
+			return;
 		}
 
 		Menu editMenu = new EvaluatorMenu(entity().getInterpreter().getProgram(programId));
