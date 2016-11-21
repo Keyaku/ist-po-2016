@@ -51,10 +51,10 @@ public class Program {
 	}
 
 	public String getAsText() {
-		String result = _name + ":\n\"\"\"";
+		String result = "";
 		for (Expression exp : _exps) {
 			result += exp.getAsText() + "\n";
 		}
-		return result + "\n\"\"\"";
+		return result + "\n";
 	}
 }

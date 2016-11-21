@@ -1,8 +1,12 @@
 package pex.app.main;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+
 import java.io.IOException;
 
 import pex.app.App;
+import pex.core.Program;
 
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Display;
@@ -24,6 +28,25 @@ public class WriteProgram extends Command<App> {
     /** @see pt.utl.ist.po.ui.Command#execute() */
     @Override
     public final void execute() throws InvalidOperation {
-        //FIXME implement
+        Form f = new Form(title());
+		InputString iiProgramId = new InputString(f, Message.requestProgramId());
+		InputString isProgramName = new InputString(f, Message.programFileName());
+		f.parse();
+
+		String programId = iiProgramId.value();
+		String filename = isProgramName.value();
+		Program p = entity().getInterpreter().getProgram(programId);
+
+		if (p == null) {
+			throw new InvalidOperation(Message.noSuchProgram(programId));
+		}
+
+		try {
+			BufferedWriter writer = new BufferedWriter(new FileWriter(filename));
+			writer.write(p.getAsText());
+			writer.close();
+		} catch (IOException e) {
+			// Do nothing
+		}
     }
 }
