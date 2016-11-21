@@ -47,6 +47,7 @@ public class Program {
 	public Literal execute() {
 		// FIXME: iterate the List of Expressions, evaluate each one and return
 		// the final Literal
+		return null;
 	}
 
 	public String getAsText() {
