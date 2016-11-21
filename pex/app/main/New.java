@@ -1,6 +1,7 @@
 package pex.app.main;
 
 import pex.app.App;
+import pex.core.Interpreter;
 
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Display;
@@ -21,6 +22,6 @@ public class New extends Command<App> {
     /** @see pt.utl.ist.po.ui.Command#execute() */
     @Override
     public final void execute() {
-    	//FIXME implement
+		entity().setInterpreter(new Interpreter(entity()));
     }
 }
