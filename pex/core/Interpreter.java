@@ -1,6 +1,7 @@
 package pex.core;
 
-import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
 import java.io.Serializable;
 
 import pex.AppIO;
@@ -14,7 +15,7 @@ public class Interpreter implements Serializable {
 	private static final long serialVersionUID = 51473L;
 	private String _filename;
 	private AppIO _io;
-	private List<Program> _progs;
+	private Map<String, Program> _progs = new HashMap<String, Program>();
 
 	public Interpreter(AppIO appio) {
 		_io = appio;
@@ -29,15 +30,15 @@ public class Interpreter implements Serializable {
 	}
 
 	public void addProgram(Program p) {
-		_progs.add(p);
+		if (_progs.containsKey(p.getName())) {
+			_progs.remove(p.getName());
+		}
+		_progs.put(p.getName(), p);
 	}
 
 	public Program getProgram(String name) {
-		// FIXME: find the program within _progs by `name`
-		for (Program p : _progs) {
-			if (p.getName() == name) {
-				return p;
-			}
+		if (_progs.containsKey(name)) {
+			return _progs.get(name);
 		}
 		return null;
 	}
