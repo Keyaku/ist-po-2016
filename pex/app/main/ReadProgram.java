@@ -7,6 +7,8 @@ import java.io.IOException;
 
 import pex.app.App;
 import pex.core.Program;
+// TODO: remove these if we're to put Expression right under core/
+import pex.core.expression.StringLiteral;
 
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Display;
@@ -34,12 +36,15 @@ public class ReadProgram extends Command<App> {
 
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader(filename));
-			Program p = entity().getInterpreter().getProgram(filename);
+			Program p = new Program(filename);
 
-			if (p == null) {
-				p = new Program(filename);
+			String line;
+			for (int idx = 0; (line = reader.readLine()) != null; idx++) {
+				p.add(idx, new StringLiteral(line));
 			}
+
 			reader.close();
+			entity().getInterpreter().addProgram(p);
 		} catch (IOException e) {
 			// Do nothing
 		}
