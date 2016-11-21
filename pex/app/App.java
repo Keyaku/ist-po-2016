@@ -18,7 +18,7 @@ import pt.utl.ist.po.ui.Display;
  * It uses a text-based user interface.
  */
 public class App implements AppIO {
-    // FIXME: Add fileds here if needed
+	// FIXME: Add fileds here if needed
 
     public App() {
 		// FIXME: add core here if needed
@@ -67,7 +67,7 @@ public class App implements AppIO {
      */
     public static void main(String[] args) {
 		// FIXME: properly set this up.
-		AppIO app = new App();
+		App app = new App();
 
         String datafile = System.getProperty("import"); //$NON-NLS-1$
         if (datafile != null) {
