@@ -20,7 +20,8 @@ public class NewProgram extends Command<App> {
 
     /** @see pt.utl.ist.po.ui.Command#execute() */
     @Override
+    @SuppressWarnings("nls")
     public final void execute() {
-        //FIXME implement
+        entity().getInterpreter.addProgram(new Program());
     }
 }
