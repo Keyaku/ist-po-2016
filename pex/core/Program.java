@@ -55,6 +55,6 @@ public class Program {
 		for (Expression exp : _exps) {
 			result += exp.getAsText() + "\n";
 		}
-		return result + "\n";
+		return result;
 	}
 }
