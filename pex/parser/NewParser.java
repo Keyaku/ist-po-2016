@@ -141,7 +141,7 @@ public class NewParser {
                 throw new InvalidExpressionException(_tokenizer.lineno());
             }
 
-          // processing binary expressions
+        // processing binary expressions
         case "add":
             return new Add(parseArgument(), parseArgument());
 
@@ -187,11 +187,11 @@ public class NewParser {
         case "while":
             return new While(parseArgument(), parseArgument());
 
-         // processing ternary expressions
+        // processing ternary expressions
         case "if":
             return new If(parseArgument(), parseArgument(), parseArgument());
 
-         // processing variadic expressions
+        // processing variadic expressions
         case "seq":
         case "print":
 	        // process args

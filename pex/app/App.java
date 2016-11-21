@@ -15,7 +15,7 @@ import pt.utl.ist.po.ui.Display;
  * It uses a text-based user interface.
  */
 public class App implements AppIO {
-    // Add fileds here if needed
+    // FIXME: Add fileds here if needed
 
     public App() {
 		// FIXME: add core here if needed
@@ -27,7 +27,10 @@ public class App implements AppIO {
      * @param str the string to write
      **/
     public void println(String str) {
-        // FIXME: add code here
+        // TODO: test this code
+		Display d = new Display();
+		d.addNewLine(str);
+		d.display();
     }
 
     /**
@@ -36,8 +39,11 @@ public class App implements AppIO {
      * @return the string written by the user.
      **/
     public String readString() {
-        // FIXME: add code here
-		return "";
+        // TODO: test this code
+		Form form = new Form("App");
+        InputString is = new InputInteger(f, "Write your string: ");
+		f.parse()
+		return is.value();
     }
 
     /**
@@ -46,15 +52,19 @@ public class App implements AppIO {
      * @return the number written by the user.
      **/
     public int readInteger() {
-        // FIXME: add code here
-		return 0;
+		// TODO: test this code
+		Form form = new Form("App");
+        InputInteger ii = new InputInteger(f, "Write your integer: ");
+		f.parse()
+		return ii.value();
     }
 
     /**
      * @param args
      */
     public static void main(String[] args) {
-        //FIXME create main core object
+		// FIXME: properly set this up.
+		AppIO app = new App();
 
         String datafile = System.getProperty("import"); //$NON-NLS-1$
         if (datafile != null) {
@@ -65,9 +75,6 @@ public class App implements AppIO {
                 e.printStackTrace();
             }
         }
-
-		// FIXME: properly set this up.
-		AppIO app = new App();
 
         MainMenu menu = new MainMenu(app);
         menu.open();
