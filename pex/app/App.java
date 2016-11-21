@@ -83,7 +83,6 @@ public class App implements AppIO {
         String datafile = System.getProperty("import"); //$NON-NLS-1$
         if (datafile != null) {
             try {
-                // FIXME: read import file into core object (use Parser instance)
 				NewParser parser = new NewParser();
 				Program pImport = parser.parseFile(datafile, "import");
 				app.getInterpreter().addProgram(pImport);
