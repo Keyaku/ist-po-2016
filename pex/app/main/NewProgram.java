@@ -1,6 +1,7 @@
 package pex.app.main;
 
 import pex.app.App;
+import pex.core.Program;
 
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Form;
@@ -23,9 +24,10 @@ public class NewProgram extends Command<App> {
     @SuppressWarnings("nls")
     public final void execute() {
         Form f = new Form(title());
-        InputString is = new InputString(f, Message.RequestProgramId());
+        InputString is = new InputString(f, Message.requestProgramId());
         f.parse();
-        String nameprogram = is.value();
-        entity().getInterpreter().addProgram(new Program(nameprogram)); 
+
+        String programName = is.value();
+        entity().getInterpreter().addProgram(new Program(programName));
     }
 }
