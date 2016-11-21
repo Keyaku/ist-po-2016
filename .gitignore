@@ -12,7 +12,7 @@
 hs_err_pid*
 
 # Objects
-bld/*
+bld/pex
 
 # Testing files
 *.outhyp
