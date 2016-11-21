@@ -10,8 +10,8 @@ public class Mul extends BinaryExpression {
 	}
 
 	public String getAsText() {
-		return "Mul(" +
-			getFirstArgument().getAsText()  + ", " +
+		return "(mul " +
+			getFirstArgument().getAsText()  + " " +
 			getSecondArgument().getAsText() +
 			")";
 	}

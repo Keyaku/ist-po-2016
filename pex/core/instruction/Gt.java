@@ -10,8 +10,8 @@ public class Gt extends BinaryExpression {
 	}
 
 	public String getAsText() {
-		return "Gt(" +
-			getFirstArgument().getAsText()  + ", " +
+		return "(gt " +
+			getFirstArgument().getAsText()  + " " +
 			getSecondArgument().getAsText() +
 			")";
 	}

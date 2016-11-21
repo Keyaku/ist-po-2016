@@ -10,8 +10,8 @@ public class Lt extends BinaryExpression {
 	}
 
 	public String getAsText() {
-		return "Lt(" +
-			getFirstArgument().getAsText()  + ", " +
+		return "(lt " +
+			getFirstArgument().getAsText()  + " " +
 			getSecondArgument().getAsText() +
 			")";
 	}

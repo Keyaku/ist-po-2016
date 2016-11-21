@@ -14,7 +14,7 @@ public class Call extends UnaryExpression {
 	}
 
 	public String getAsText() {
-		return "Call(" + getArgument().getAsText() + ")";
+		return "(call " + getArgument().getAsText() + ")";
 	}
 
 	public Literal evaluate() {

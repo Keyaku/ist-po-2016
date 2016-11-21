@@ -10,8 +10,8 @@ public class Eq extends BinaryExpression {
 	}
 
 	public String getAsText() {
-		return "Eq(" +
-			getFirstArgument().getAsText()  + ", " +
+		return "(eq " +
+			getFirstArgument().getAsText()  + " " +
 			getSecondArgument().getAsText() +
 			")";
 	}

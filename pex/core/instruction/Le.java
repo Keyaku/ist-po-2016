@@ -10,8 +10,8 @@ public class Le extends BinaryExpression {
 	}
 
 	public String getAsText() {
-		return "Le(" +
-			getFirstArgument().getAsText()  + ", " +
+		return "(le " +
+			getFirstArgument().getAsText()  + " " +
 			getSecondArgument().getAsText() +
 			")";
 	}

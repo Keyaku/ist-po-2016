@@ -10,8 +10,8 @@ public class And extends BinaryExpression {
 	}
 
 	public String getAsText() {
-		return "And(" +
-			getFirstArgument().getAsText()  + ", " +
+		return "(and " +
+			getFirstArgument().getAsText()  + " " +
 			getSecondArgument().getAsText() +
 			")";
 	}

@@ -10,8 +10,8 @@ public class Sub extends BinaryExpression {
 	}
 
 	public String getAsText() {
-		return "Sub(" +
-			getFirstArgument().getAsText()  + ", " +
+		return "(sub " +
+			getFirstArgument().getAsText()  + " " +
 			getSecondArgument().getAsText() +
 			")";
 	}

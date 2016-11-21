@@ -10,8 +10,8 @@ public class Ne extends BinaryExpression {
 	}
 
 	public String getAsText() {
-		return "Ne(" +
-			getFirstArgument().getAsText()  + ", " +
+		return "(ne " +
+			getFirstArgument().getAsText()  + " " +
 			getSecondArgument().getAsText() +
 			")";
 	}

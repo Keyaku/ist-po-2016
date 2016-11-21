@@ -10,7 +10,7 @@ public class Not extends UnaryExpression {
 	}
 
 	public String getAsText() {
-		return "Not(" + getArgument().getAsText() + ")";
+		return "(not " + getArgument().getAsText() + ")";
 	}
 
 	public Literal evaluate() {

@@ -10,8 +10,8 @@ public class While extends BinaryExpression {
 	}
 
 	public String getAsText() {
-		return "While(" +
-			getFirstArgument().getAsText()  + ", " +
+		return "(while " +
+			getFirstArgument().getAsText()  + " " +
 			getSecondArgument().getAsText() +
 			")";
 	}

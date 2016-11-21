@@ -13,8 +13,8 @@ public class Set extends BinaryExpression {
 	}
 
 	public String getAsText() {
-		return "Set(" +
-			getFirstArgument().getAsText()  + ", " +
+		return "(set " +
+			getFirstArgument().getAsText()  + " " +
 			getSecondArgument().getAsText() +
 			")";
 	}

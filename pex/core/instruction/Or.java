@@ -10,8 +10,8 @@ public class Or extends BinaryExpression {
 	}
 
 	public String getAsText() {
-		return "Or(" +
-			getFirstArgument().getAsText()  + ", " +
+		return "(or " +
+			getFirstArgument().getAsText()  + " " +
 			getSecondArgument().getAsText() +
 			")";
 	}

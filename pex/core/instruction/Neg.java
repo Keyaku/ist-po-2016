@@ -10,7 +10,7 @@ public class Neg extends UnaryExpression {
 	}
 
 	public String getAsText() {
-		return "Neg(" + getArgument().getAsText() + ")";
+		return "(neg " + getArgument().getAsText() + ")";
 	}
 
 	public Literal evaluate() {

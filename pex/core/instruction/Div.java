@@ -10,8 +10,8 @@ public class Div extends BinaryExpression {
 	}
 
 	public String getAsText() {
-		return "Div(" +
-			getFirstArgument().getAsText()  + ", " +
+		return "(div " +
+			getFirstArgument().getAsText()  + " " +
 			getSecondArgument().getAsText() +
 			")";
 	}

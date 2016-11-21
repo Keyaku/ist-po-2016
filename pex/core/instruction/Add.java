@@ -10,8 +10,8 @@ public class Add extends BinaryExpression {
 	}
 
 	public String getAsText() {
-		return "Add(" +
-			getFirstArgument().getAsText()  + ", " +
+		return "(add " +
+			getFirstArgument().getAsText()  + " " +
 			getSecondArgument().getAsText() +
 			")";
 	}

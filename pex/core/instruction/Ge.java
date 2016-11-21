@@ -10,8 +10,8 @@ public class Ge extends BinaryExpression {
 	}
 
 	public String getAsText() {
-		return "Ge(" +
-			getFirstArgument().getAsText()  + ", " +
+		return "(ge " +
+			getFirstArgument().getAsText()  + " " +
 			getSecondArgument().getAsText() +
 			")";
 	}

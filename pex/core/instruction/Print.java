@@ -15,9 +15,9 @@ public class Print extends VariadicExpression {
 	}
 
 	public String getAsText() {
-		String result = "Print(";
+		String result = "(print ";
 		for (Expression exp : getArguments()) {
-			result += exp.getAsText() + ", ";
+			result += exp.getAsText() + " ";
 		}
 		return result + ")";
 	}

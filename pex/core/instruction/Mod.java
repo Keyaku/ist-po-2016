@@ -10,8 +10,8 @@ public class Mod extends BinaryExpression {
 	}
 
 	public String getAsText() {
-		return "Mod(" +
-			getFirstArgument().getAsText()  + ", " +
+		return "(mod " +
+			getFirstArgument().getAsText()  + " " +
 			getSecondArgument().getAsText() +
 			")";
 	}

@@ -10,9 +10,9 @@ public class If extends TernaryExpression {
 	}
 
 	public String getAsText() {
-		return "If(" +
-			getFirstArgument().getAsText()  + ", " +
-			getSecondArgument().getAsText() + ", " +
+		return "(if " +
+			getFirstArgument().getAsText()  + " " +
+			getSecondArgument().getAsText() + " " +
 			getThirdArgument().getAsText()  +
 			")";
 	}

@@ -1,7 +1,7 @@
 package pex.core.expression;
 
 public class Identifier extends Expression {
-	private String _name = "";
+	private String _name;
 
 	public Identifier(String value) {
 		_name = value;
@@ -12,7 +12,7 @@ public class Identifier extends Expression {
 	** @return Value as a String
 	*/
 	public String getAsText() {
-		return "Identifier \"" + _name + "\"";
+		return _name;
 	}
 
 	/**
