@@ -45,7 +45,7 @@ public class Save extends Command<App> {
 			out.writeObject(entity().getInterpreter());
 			out.close();
 		} catch (IOException e) {
-			throw new InvalidOperation("Não foi possível guardar o ficheiro.");
+			// do nothing
 		}
     }
 }
