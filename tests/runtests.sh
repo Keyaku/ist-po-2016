@@ -111,7 +111,7 @@ function start_testing {
 	        java -Din=$x -Dout=${x%.in}.outhyp "$EXEC_javaApp";
 	    fi
 
-	    diff -cBw ${x%.in}.out ${x%.in}.outhyp > ${x%.in}.diff ;
+	    diff ${x%.in}.out ${x%.in}.outhyp > ${x%.in}.diff ;
 	    if [ -s ${x%.in}.diff ]; then
 	        echo "FAILURE: $x. See file ${x%.in}.diff " ;
 	    else
