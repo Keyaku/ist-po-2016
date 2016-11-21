@@ -1,6 +1,7 @@
 package pex.core;
 
 import java.util.List;
+import java.io.Serializable;
 
 import pex.AppIO;
 
@@ -9,7 +10,9 @@ import pex.core.expression.*;
 import pex.core.expression.Identifier;
 import pex.core.expression.Literal;
 
-public class Interpreter {
+public class Interpreter implements Serializable {
+	private static final long serialVersionUID = 51473L;
+	private String _filename;
 	private AppIO _io;
 	private List<Program> _progs;
 
@@ -37,6 +40,14 @@ public class Interpreter {
 			}
 		}
 		return null;
+	}
+
+	public void setFilename(String value) {
+		_filename = value;
+	}
+
+	public String getFilename() {
+		return _filename;
 	}
 
 	public AppIO getAppIO() {

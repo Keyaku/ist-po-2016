@@ -2,6 +2,9 @@ package pex.app.main;
 
 import java.io.IOException;
 
+import java.io.ObjectOutputStream;
+import java.io.FileOutputStream;
+
 import pex.app.App;
 
 import pt.utl.ist.po.ui.Command;
@@ -23,6 +26,26 @@ public class Save extends Command<App> {
     /** @see pt.utl.ist.po.ui.Command#execute() */
     @Override
     public final void execute() throws InvalidOperation {
-        //FIXME implement
+        // Check associated filename
+		String filename;
+
+		// if it doesn't exist, use Message.newSaveAs()
+		filename = entity().getInterpreter().getFilename();
+		if (filename == null) {
+			Form f = new Form(title());
+			InputString is = new InputString(f, Message.newSaveAs());
+			f.parse();
+			filename = is.value();
+			entity().getInterpreter().setFilename(filename);
+		}
+
+		// don't do anything if there were no changes
+		try {
+			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(filename));
+			out.writeObject(entity().getInterpreter());
+			out.close();
+		} catch (IOException e) {
+			throw new InvalidOperation("Não foi possível guardar o ficheiro.");
+		}
     }
 }
