@@ -4,7 +4,7 @@ import java.util.List;
 
 import pex.AppIO;
 
-// FIXME: remove these if we're to put Expression right under core/
+// TODO: remove these if we're to put Expression right under core/
 import pex.core.expression.*;
 import pex.core.expression.Identifier;
 import pex.core.expression.Literal;
