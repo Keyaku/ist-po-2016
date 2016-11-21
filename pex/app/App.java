@@ -86,8 +86,7 @@ public class App implements AppIO {
                 // FIXME: read import file into core object (use Parser instance)
 				NewParser parser = new NewParser();
 				Program pImport = parser.parseFile(datafile, "import");
-
-				// FIXME: does this throw a ParserException?
+				app.getInterpreter().addProgram(pImport);
             } catch (ParserException e) {
                 // no behavior described: just present the problem
                 e.printStackTrace();
