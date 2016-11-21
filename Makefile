@@ -3,7 +3,7 @@ DOCDIR = docs
 
 PACKAGEDIR ?= pex
 APPDIR ?= $(PACKAGEDIR).app.App
-ZIPFILE = $(OBJDIR)/ep.jar
+ZIPFILE = $(OBJDIR)/proj.jar
 
 EXEC = `find $(PACKAGEDIR) -name "*.java"`
 
