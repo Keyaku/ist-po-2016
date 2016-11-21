@@ -121,8 +121,7 @@ function start_testing {
 }
 
 function cleanup {
-	rm -rf $DIR_tests/*.outhyp
-	rm -rf $DIR_tests/*.diff
+	rm -rf "$DIR_app"/saved*
 }
 
 function main {
