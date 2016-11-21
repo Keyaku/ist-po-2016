@@ -14,8 +14,8 @@ all:
 docs: all
 	javadoc $(EXEC) -d $(DOCDIR)
 
-zip: $(DOCDIR)
-	jar cvf $(ZIPFILE) $(DOCDIR)/*.html $(EXEC)
+zip: #$(DOCDIR)
+	jar cvf $(ZIPFILE) $(EXEC) #$(DOCDIR)/*.html
 
 run:
 	cd bld; java $(APPDIR); cd ..
