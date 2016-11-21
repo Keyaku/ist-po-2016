@@ -3,7 +3,11 @@ package pex.app.main;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import java.io.ObjectInputStream;
+import java.io.FileInputStream;
+
 import pex.app.App;
+import pex.core.Interpreter;
 
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Display;
@@ -25,6 +29,21 @@ public class Open extends Command<App> {
     /** @see pt.tecnico.po.ui.Command#execute() */
     @Override
     public final void execute() throws InvalidOperation {
-    	//FIXME implement
+		Form f = new Form(title());
+
+		InputString filename = new InputString(f, Message.openFile());
+		f.parse();
+
+		try {
+	    	ObjectInputStream in = new ObjectInputStream(new FileInputStream(filename.value()));
+			entity().setInterpreter((Interpreter)in.readObject());
+			in.close();
+		} catch (FileNotFoundException e) {
+			throw new InvalidOperation(Message.fileNotFound());
+		} catch (IOException e) {
+			throw new InvalidOperation(Message.fileNotFound(filename.value()));
+		} catch (ClassNotFoundException e) { // FIXME: this should not be here
+			throw new InvalidOperation(Message.fileNotFound());
+		}
     }
 }

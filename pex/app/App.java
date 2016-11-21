@@ -4,6 +4,7 @@ package pex.app;
 import pex.AppIO;
 import pex.parser.NewParser;
 import pex.core.Program;
+import pex.core.Interpreter;
 
 import pex.parser.ParserException;
 import pex.app.main.MainMenu;
@@ -18,12 +19,13 @@ import pt.utl.ist.po.ui.Display;
  * It uses a text-based user interface.
  */
 public class App implements AppIO {
-	// FIXME: Add fileds here if needed
+	Interpreter _interpreter;
 
     public App() {
-		// FIXME: add core here if needed
+		_interpreter = new Interpreter(this);
     }
 
+	// AppIO methods
     /**
      * Writes a string to be presented to the user.
      *
@@ -61,6 +63,15 @@ public class App implements AppIO {
 		f.parse();
 		return ii.value();
     }
+
+	// Helper methods
+	public Interpreter getInterpreter() {
+		return _interpreter;
+	}
+
+	public void setInterpreter(Interpreter value) {
+		_interpreter = value;
+	}
 
     /**
      * @param args
