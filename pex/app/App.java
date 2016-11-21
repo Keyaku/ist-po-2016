@@ -40,9 +40,9 @@ public class App implements AppIO {
      **/
     public String readString() {
         // TODO: test this code
-		Form form = new Form("App");
-        InputString is = new InputInteger(f, "Write your string: ");
-		f.parse()
+		Form f = new Form("App");
+        InputString is = new InputString(f, "Write your string: ");
+		f.parse();
 		return is.value();
     }
 
@@ -53,9 +53,9 @@ public class App implements AppIO {
      **/
     public int readInteger() {
 		// TODO: test this code
-		Form form = new Form("App");
+		Form f = new Form("App");
         InputInteger ii = new InputInteger(f, "Write your integer: ");
-		f.parse()
+		f.parse();
 		return ii.value();
     }
 
