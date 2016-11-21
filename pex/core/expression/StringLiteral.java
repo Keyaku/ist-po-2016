@@ -11,7 +11,7 @@ public class StringLiteral extends Literal {
 	}
 
 	public String getAsText() {
-		return _value;
+		return "\"" + _value + "\"";
 	}
 
 	/**
