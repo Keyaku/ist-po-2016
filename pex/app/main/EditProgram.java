@@ -40,7 +40,7 @@ public class EditProgram extends Command<App> {
 			return;
 		}
 
-		Menu editMenu = new EvaluatorMenu(entity().getInterpreter().getProgram(programId));
+		Menu editMenu = new EvaluatorMenu(p);
 		editMenu.open();
     }
 

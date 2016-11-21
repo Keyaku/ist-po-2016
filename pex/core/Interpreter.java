@@ -37,10 +37,7 @@ public class Interpreter implements Serializable {
 	}
 
 	public Program getProgram(String name) {
-		if (_progs.containsKey(name)) {
-			return _progs.get(name);
-		}
-		return null;
+		return _progs.get(name);
 	}
 
 	public void setFilename(String value) {
