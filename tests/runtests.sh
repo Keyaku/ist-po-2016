@@ -31,8 +31,8 @@ ScriptName="$0"
 cd "$(dirname "$0")"
 DIR_current="$(pwd)"
 
-DIR_tests="tests"
-DIR_javaApp="../bld"
+DIR_tests="$DIR_current/tests"
+DIR_javaApp="$DIR_current/../bld"
 EXEC_javaApp="pex.app.App"
 
 # String Arrays
@@ -106,9 +106,9 @@ function print_error {
 function start_testing {
 	for x in $DIR_tests/*.in; do
 	    if [ -e ${x%.in}.import ]; then
-	        echo java -Dimport=${x%.in}.import -Din=$x -Dout=${x%.in}.outhyp "$EXEC_javaApp";
+	        java -Dimport=${x%.in}.import -Din=$x -Dout=${x%.in}.outhyp "$EXEC_javaApp";
 	    else
-	        echo java -Din=$x -Dout=${x%.in}.outhyp "$EXEC_javaApp";
+	        java -Din=$x -Dout=${x%.in}.outhyp "$EXEC_javaApp";
 	    fi
 
 	    diff -cBw ${x%.in}.out ${x%.in}.outhyp > ${x%.in}.diff ;
