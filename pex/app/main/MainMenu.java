@@ -1,6 +1,6 @@
 package pex.app.main;
 
-import pex.AppIO;
+import pex.app.App;
 
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Menu;
@@ -14,7 +14,7 @@ public class MainMenu extends Menu {
     /**
      * @param receiver The instanced Interpreter for this session
      */
-    public MainMenu(AppIO receiver) {
+    public MainMenu(App receiver) {
         super(Label.TITLE,
             new Command<?>[] {              //
 				new New(receiver),          // Command for creating a new interpreter.

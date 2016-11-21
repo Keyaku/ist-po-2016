@@ -1,6 +1,6 @@
 package pex.app.main;
 
-import pex.AppIO;
+import pex.app.App;
 
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Form;
@@ -9,12 +9,12 @@ import pt.utl.ist.po.ui.InputString;
 /**
  * Create new program.
  */
-public class NewProgram extends Command<AppIO> {
+public class NewProgram extends Command<App> {
 
     /**
      * @param receiver
      */
-    public NewProgram(AppIO receiver) {
+    public NewProgram(App receiver) {
         super(Label.NEW_PROGRAM, receiver);
     }
 

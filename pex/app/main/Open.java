@@ -3,7 +3,7 @@ package pex.app.main;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-import pex.AppIO;
+import pex.app.App;
 
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Display;
@@ -14,17 +14,17 @@ import pt.utl.ist.po.ui.InvalidOperation;
 /**
  * Open existing interpreter.
  */
-public class Open extends Command<AppIO> {
+public class Open extends Command<App> {
     /**
      * @param receiver
      */
-    public Open(AppIO receiver) {
+    public Open(App receiver) {
         super(Label.OPEN, receiver);
     }
 
     /** @see pt.tecnico.po.ui.Command#execute() */
     @Override
     public final void execute() throws InvalidOperation {
-        //FIXME implement
+    	//FIXME implement
     }
 }

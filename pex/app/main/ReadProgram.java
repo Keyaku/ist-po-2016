@@ -1,6 +1,6 @@
 package pex.app.main;
 
-import pex.AppIO;
+import pex.app.App;
 
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Display;
@@ -10,11 +10,11 @@ import pt.utl.ist.po.ui.InputString;
 /**
  * Read existing program.
  */
-public class ReadProgram extends Command<AppIO> {
+public class ReadProgram extends Command<App> {
     /**
      * @param receiver
      */
-    public ReadProgram(AppIO receiver) {
+    public ReadProgram(App receiver) {
         super(Label.READ_PROGRAM, receiver);
     }
 
