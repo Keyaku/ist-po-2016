@@ -20,6 +20,9 @@ zip: $(DOCDIR)
 run:
 	cd bld; java $(APPDIR); cd ..
 
+swing:
+	cd bld; java -Dui=swing $(APPDIR); cd ..
+
 clean:
 	rm -rf *.class $(OBJDIR)/* $(DOCDIR)/*
 
