@@ -2,6 +2,9 @@ package pex.app;
 
 // import core entities;
 import pex.AppIO;
+import pex.parser.NewParser;
+import pex.core.Program;
+
 import pex.parser.ParserException;
 import pex.app.main.MainMenu;
 
@@ -70,6 +73,10 @@ public class App implements AppIO {
         if (datafile != null) {
             try {
                 // FIXME: read import file into core object (use Parser instance)
+				NewParser parser = new NewParser();
+				Program pImport = parser.parseFile(datafile, "import");
+
+				// FIXME: does this throw a ParserException?
             } catch (ParserException e) {
                 // no behavior described: just present the problem
                 e.printStackTrace();
