@@ -39,7 +39,7 @@ public class Open extends Command<App> {
 			throw new InvalidOperation(Message.fileNotFound());
 		} catch (IOException e) {
 			throw new InvalidOperation(Message.fileNotFound(filename));
-		} catch (ClassNotFoundException e) { // FIXME: this should not be here
+		} catch (ClassNotFoundException e) {
 			throw new InvalidOperation(Message.fileNotFound());
 		}
     }
