@@ -43,10 +43,9 @@ public class App implements AppIO {
      *
      * @return the string written by the user.
      **/
-    public String readString() {
-        // TODO: test this code
-		Form f = new Form("App");
-        InputString is = new InputString(f, "Write your string: ");
+    public String readString(String title, String message) {
+		Form f = new Form(title);
+        InputString is = new InputString(f, message);
 		f.parse();
 		return is.value();
     }
@@ -56,10 +55,9 @@ public class App implements AppIO {
      *
      * @return the number written by the user.
      **/
-    public int readInteger() {
-		// TODO: test this code
-		Form f = new Form("App");
-        InputInteger ii = new InputInteger(f, "Write your integer: ");
+    public int readInteger(String title, String message) {
+		Form f = new Form(title);
+        InputInteger ii = new InputInteger(f, message);
 		f.parse();
 		return ii.value();
     }

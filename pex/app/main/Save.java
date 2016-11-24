@@ -32,10 +32,7 @@ public class Save extends Command<App> {
 		// if it doesn't exist, use Message.newSaveAs()
 		filename = entity().getInterpreter().getFilename();
 		if (filename == null) {
-			Form f = new Form(title());
-			InputString is = new InputString(f, Message.newSaveAs());
-			f.parse();
-			filename = is.value();
+			filename = entity().readString(title(), Message.newSaveAs());
 			entity().getInterpreter().setFilename(filename);
 		}
 

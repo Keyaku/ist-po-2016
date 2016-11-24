@@ -28,13 +28,8 @@ public class WriteProgram extends Command<App> {
     /** @see pt.utl.ist.po.ui.Command#execute() */
     @Override
     public final void execute() throws InvalidOperation {
-        Form f = new Form(title());
-		InputString iiProgramId = new InputString(f, Message.requestProgramId());
-		InputString isProgramName = new InputString(f, Message.programFileName());
-		f.parse();
-
-		String programId = iiProgramId.value();
-		String filename = isProgramName.value();
+		String programId = entity().readString(title(), Message.requestProgramId());
+		String filename = entity().readString(title(), Message.programFileName());
 		Program p = entity().getInterpreter().getProgram(programId);
 
 		if (p == null) {

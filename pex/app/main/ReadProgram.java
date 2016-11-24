@@ -25,10 +25,7 @@ public class ReadProgram extends Command<App> {
     /** @see pt.utl.ist.po.ui.Command#execute() */
     @Override
     public final void execute() {
-		Form f = new Form(title());
-		InputString is = new InputString(f, Message.programFileName());
-		f.parse();
-		String filename = is.value();
+		String filename = entity().readString(title(), Message.programFileName());
 
 		try {
 			NewParser parser = new NewParser();

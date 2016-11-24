@@ -23,11 +23,7 @@ public class NewProgram extends Command<App> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
-        Form f = new Form(title());
-        InputString is = new InputString(f, Message.requestProgramId());
-        f.parse();
-
-        String programName = is.value();
+		String programName = entity().readString(title(), Message.requestProgramId());
         entity().getInterpreter().addProgram(new Program(programName));
     }
 }

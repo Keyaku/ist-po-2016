@@ -29,19 +29,16 @@ public class Open extends Command<App> {
     /** @see pt.tecnico.po.ui.Command#execute() */
     @Override
     public final void execute() throws InvalidOperation {
-		Form f = new Form(title());
-
-		InputString filename = new InputString(f, Message.openFile());
-		f.parse();
+		String filename = entity().readString(title(), Message.openFile());
 
 		try {
-	    	ObjectInputStream in = new ObjectInputStream(new FileInputStream(filename.value()));
+	    	ObjectInputStream in = new ObjectInputStream(new FileInputStream(filename));
 			entity().setInterpreter((Interpreter)in.readObject());
 			in.close();
 		} catch (FileNotFoundException e) {
 			throw new InvalidOperation(Message.fileNotFound());
 		} catch (IOException e) {
-			throw new InvalidOperation(Message.fileNotFound(filename.value()));
+			throw new InvalidOperation(Message.fileNotFound(filename));
 		} catch (ClassNotFoundException e) { // FIXME: this should not be here
 			throw new InvalidOperation(Message.fileNotFound());
 		}

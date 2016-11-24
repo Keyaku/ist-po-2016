@@ -27,10 +27,7 @@ public class EditProgram extends Command<App> {
     /** @see pt.utl.ist.po.ui.Command#execute() */
     @Override
     public final void execute() {
-		Form f = new Form(title());
-		InputString is = new InputString(f, Message.requestProgramId());
-		f.parse();
-		String programId = is.value();
+		String programId = entity().readString(title(), Message.requestProgramId());
 
 		Program p = entity().getInterpreter().getProgram(programId);
 		if (p == null) {
