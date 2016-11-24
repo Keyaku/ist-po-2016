@@ -8,7 +8,7 @@ import pex.core.Program;
  * Run program.
  */
 public class RunProgram extends ProgramCommand {
-  
+
     /**
      * @param receiver
      */
@@ -19,6 +19,6 @@ public class RunProgram extends ProgramCommand {
     /** @see pt.utl.ist.po.ui.Command#execute() */
     @Override
     public final void execute() {
-        //FIXME implement
+        entity().execute();
     }
 }
