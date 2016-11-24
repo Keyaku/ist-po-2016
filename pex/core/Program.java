@@ -58,4 +58,8 @@ public class Program implements Serializable {
 		}
 		return result;
 	}
+
+	public List<Expression> getNumExpressions() {
+		return _exps.size();
+	}
 }
