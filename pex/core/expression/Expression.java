@@ -1,6 +1,8 @@
 package pex.core.expression;
 
-public abstract class Expression {
+import java.io.Serializable;
+
+public abstract class Expression implements Serializable {
 	/**
 	** Returns the literal as text
 	** @return Value as a String

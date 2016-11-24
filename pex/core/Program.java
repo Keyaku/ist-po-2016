@@ -3,6 +3,7 @@ package pex.core;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.io.Serializable;
 
 import pex.AppIO;
 
@@ -11,7 +12,7 @@ import pex.core.expression.*;
 import pex.core.expression.Identifier;
 import pex.core.expression.Literal;
 
-public class Program {
+public class Program implements Serializable {
 	private String _name = "";
 	private List<Expression> _exps = new ArrayList<Expression>();
 

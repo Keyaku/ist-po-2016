@@ -12,7 +12,6 @@ import pex.core.expression.Identifier;
 import pex.core.expression.Literal;
 
 public class Interpreter implements Serializable {
-	private static final long serialVersionUID = 51473L;
 	private String _filename;
 	private AppIO _io;
 	private Map<String, Program> _progs = new HashMap<String, Program>();

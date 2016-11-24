@@ -1,5 +1,7 @@
 package pex.app;
 
+import java.io.Serializable;
+
 // import core entities;
 import pex.AppIO;
 import pex.parser.NewParser;
@@ -18,7 +20,7 @@ import pt.utl.ist.po.ui.Display;
  * This is a sample client for the expression evaluator.
  * It uses a text-based user interface.
  */
-public class App implements AppIO {
+public class App implements AppIO, Serializable {
 	Interpreter _interpreter;
 
     public App() {

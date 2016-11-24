@@ -38,9 +38,10 @@ public class Save extends Command<App> {
 		try {
 			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(filename));
 			out.writeObject(entity().getInterpreter());
+			out.flush();
 			out.close();
 		} catch (IOException e) {
-			// do nothing
+			throw new InvalidOperation("Não foi possível guardar o interpretador.");
 		}
     }
 }
