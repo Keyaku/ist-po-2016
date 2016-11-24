@@ -59,7 +59,7 @@ public class Program implements Serializable {
 		return result;
 	}
 
-	public List<Expression> getNumExpressions() {
+	public int getNumExpressions() {
 		return _exps.size();
 	}
 }

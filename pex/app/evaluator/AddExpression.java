@@ -3,7 +3,7 @@ package pex.app.evaluator;
 import pex.app.BadExpressionException;
 import pex.app.BadPositionException;
 
-import pex.parser.NewParser;
+import pex.parser.*;
 
 import pex.core.Program;
 import pex.core.expression.Expression;
@@ -36,15 +36,15 @@ public class AddExpression extends ProgramCommand {
 		int idx = inputPos.value();
 
 		// Check position value
-		if !(0 <= idx && idx <= entity().getNumExpressions()) {
-			throw new BadPositionException("Posição inválida.");
+		if (!(0 <= idx && idx <= entity().getNumExpressions())) {
+			throw new BadPositionException(idx);
 		}
 
 		// Attempt to parse expression
 		try {
 			exp = parser.parseString(inputExp.value(), entity());
-		} catch (BadSourceException e) {
-			throw new BadExpressionException("Expressão inválida.");
+		} catch (BadSourceException|BadNumberException|InvalidExpressionException|MissingClosingParenthesisException|UnknownOperationException|EndOfInputException e) {
+			throw new BadExpressionException(inputExp.value());
 		}
 
 		// Finally, add expression
