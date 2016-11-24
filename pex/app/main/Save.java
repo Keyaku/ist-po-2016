@@ -8,8 +8,6 @@ import java.io.FileOutputStream;
 import pex.app.App;
 
 import pt.utl.ist.po.ui.Command;
-import pt.utl.ist.po.ui.Form;
-import pt.utl.ist.po.ui.InputString;
 import pt.utl.ist.po.ui.InvalidOperation;
 
 /**

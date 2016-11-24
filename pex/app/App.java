@@ -32,7 +32,6 @@ public class App implements AppIO {
      * @param str the string to write
      **/
     public void println(String str) {
-        // TODO: test this code
 		Display d = new Display();
 		d.addNewLine(str);
 		d.display();
