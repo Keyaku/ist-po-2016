@@ -106,16 +106,16 @@ function print_error {
 function start_testing {
 	for x in $DIR_tests/*.in; do
 	    if [ -e ${x%.in}.import ]; then
-	        java -Dimport=${x%.in}.import -Din=$x -Dout=${x%.in}.outhyp "$EXEC_javaApp";
+	        java -Dimport=${x%.in}.import -Din=$x -Dout=${x%.in}.outhyp "$EXEC_javaApp"
 	    else
-	        java -Din=$x -Dout=${x%.in}.outhyp "$EXEC_javaApp";
+	        java -Din=$x -Dout=${x%.in}.outhyp "$EXEC_javaApp"
 	    fi
 
-	    diff ${x%.in}.out ${x%.in}.outhyp > ${x%.in}.diff ;
+	    diff ${x%.in}.out ${x%.in}.outhyp > ${x%.in}.diff
 	    if [ -s ${x%.in}.diff ]; then
-	        echo "FAILURE: $x. See file ${x%.in}.diff " ;
+	        echo "FAILURE: $x. See file ${x%.in}.diff "
 	    else
-	        rm -f ${x%.in}.diff ${x%.in}.outhyp ;
+	        rm -f ${x%.in}.diff ${x%.in}.outhyp
 	    fi
 	done
 }
