@@ -36,7 +36,7 @@ public class AddExpression extends ProgramCommand {
 		int idx = inputPos.value();
 
 		// Check position value
-		if !(0 <= idx && idx < entity().getNumExpressions()) {
+		if !(0 <= idx && idx <= entity().getNumExpressions()) {
 			throw new BadPositionException("Posição inválida.");
 		}
 
