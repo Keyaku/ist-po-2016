@@ -77,7 +77,6 @@ public class App implements AppIO {
      * @param args
      */
     public static void main(String[] args) {
-		// FIXME: properly set this up.
 		App app = new App();
 
         String datafile = System.getProperty("import"); //$NON-NLS-1$

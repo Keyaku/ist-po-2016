@@ -1,6 +1,5 @@
 package pex.app.evaluator;
 
-//FIXME import core classes
 import pex.core.Program;
 
 import pt.utl.ist.po.ui.Display;
@@ -21,7 +20,7 @@ public class ShowProgram extends ProgramCommand {
     @Override
     public final void execute() {
 		Display d = new Display(title());
-		d.addNewLine(entity().getAsText());
+		d.add(entity().getAsText());
 		d.display();
     }
 }

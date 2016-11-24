@@ -1,14 +1,10 @@
 package pex.app.main;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-
 import java.io.IOException;
 
 import pex.app.App;
-import pex.core.Program;
-// TODO: remove these if we're to put Expression right under core/
-import pex.core.expression.StringLiteral;
+import pex.parser.NewParser;
+import pex.parser.ParserException;
 
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Display;
@@ -35,17 +31,9 @@ public class ReadProgram extends Command<App> {
 		String filename = is.value();
 
 		try {
-			BufferedReader reader = new BufferedReader(new FileReader(filename));
-			Program p = new Program(filename);
-
-			String line;
-			for (int idx = 0; (line = reader.readLine()) != null; idx++) {
-				p.add(idx, new StringLiteral(line));
-			}
-
-			reader.close();
-			entity().getInterpreter().addProgram(p);
-		} catch (IOException e) {
+			NewParser parser = new NewParser();
+			entity().getInterpreter().addProgram(parser.parseFile(filename, filename));
+		} catch (ParserException e) {
 			// Do nothing
 		}
     }

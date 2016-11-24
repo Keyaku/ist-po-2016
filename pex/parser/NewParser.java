@@ -29,8 +29,8 @@ public class NewParser {
         _tokenizer.eolIsSignificant(false);
     }
 
-    public Program parseFile(String fileName, String programName /* may need aditional parameters */) throws BadSourceException, BadNumberException, InvalidExpressionException, MissingClosingParenthesisException, UnknownOperationException, EndOfInputException  {
-        _program = new Program(programName /* may need additional parameters */);
+    public Program parseFile(String fileName, String programName) throws BadSourceException, BadNumberException, InvalidExpressionException, MissingClosingParenthesisException, UnknownOperationException, EndOfInputException  {
+        _program = new Program(programName);
 
         try (FileReader reader = new FileReader(fileName)) {
             initTokenizer(reader);
@@ -38,8 +38,9 @@ public class NewParser {
             Collection<Expression> expressions = new ArrayList<>();
             Expression exp;
 
-            while ((exp = parseExpression()) != null)
-                expressions.add(exp);
+            while ((exp = parseExpression()) != null) {
+				expressions.add(exp);
+			}
 
             _program.set(expressions);
         } catch (IOException ioe) {
@@ -69,8 +70,9 @@ public class NewParser {
             return null;
 
         case StreamTokenizer.TT_NUMBER: // Literal inteiro
-            if (_tokenizer.nval < 0 || _tokenizer.nval - (int)_tokenizer.nval != 0)
+            if (_tokenizer.nval < 0 || _tokenizer.nval - (int)_tokenizer.nval != 0) {
                 throw new BadNumberException("" + _tokenizer.nval);
+			}
 
             return new IntegerLiteral((int)_tokenizer.nval);
 
