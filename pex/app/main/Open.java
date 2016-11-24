@@ -35,12 +35,8 @@ public class Open extends Command<App> {
 	    	ObjectInputStream in = new ObjectInputStream(new FileInputStream(filename));
 			entity().setInterpreter((Interpreter)in.readObject());
 			in.close();
-		} catch (FileNotFoundException e) {
-			throw new InvalidOperation(Message.fileNotFound());
-		} catch (IOException e) {
+		} catch (IOException|FileNotFoundException|ClassNotFoundException e) {
 			throw new InvalidOperation(Message.fileNotFound(filename));
-		} catch (ClassNotFoundException e) {
-			throw new InvalidOperation(Message.fileNotFound());
 		}
     }
 }
