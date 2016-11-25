@@ -6,7 +6,7 @@ public class ReadS extends CompositeExpression {
 	private AppIO _io; // FIXME: what to do with this?
 
 	public String getAsText() {
-		return "ReadS()";
+		return "(reads)";
 	}
 
 	public Literal evaluate() {
