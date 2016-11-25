@@ -1,6 +1,7 @@
 package pex.app.main;
 
 import java.io.IOException;
+import java.io.FileNotFoundException;
 
 import java.io.ObjectInputStream;
 import java.io.FileInputStream;
@@ -9,9 +10,6 @@ import pex.app.App;
 import pex.core.Interpreter;
 
 import pt.utl.ist.po.ui.Command;
-import pt.utl.ist.po.ui.Display;
-import pt.utl.ist.po.ui.Form;
-import pt.utl.ist.po.ui.InputString;
 import pt.utl.ist.po.ui.InvalidOperation;
 
 /**
@@ -30,12 +28,15 @@ public class Open extends Command<App> {
     public final void execute() throws InvalidOperation {
 		String filename = entity().readString(title(), Message.openFile());
 
+		// Opening file
 		try {
 	    	ObjectInputStream in = new ObjectInputStream(new FileInputStream(filename));
 			entity().setInterpreter((Interpreter)in.readObject());
 			in.close();
+		} catch (FileNotFoundException e) {
+			entity().println(Message.fileNotFound());
 		} catch (IOException|ClassNotFoundException e) {
-			throw new InvalidOperation(Message.fileNotFound(filename));
+			entity().println(Message.fileNotFound(filename));
 		}
     }
 }
