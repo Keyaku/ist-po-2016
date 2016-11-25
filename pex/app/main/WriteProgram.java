@@ -9,7 +9,6 @@ import pex.app.App;
 import pex.core.Program;
 
 import pt.utl.ist.po.ui.Command;
-import pt.utl.ist.po.ui.Display;
 import pt.utl.ist.po.ui.InvalidOperation;
 
 /**
@@ -28,18 +27,21 @@ public class WriteProgram extends Command<App> {
     public final void execute() throws InvalidOperation {
 		String programId = entity().readString(title(), Message.requestProgramId());
 		String filename = entity().readString(title(), Message.programFileName());
-		Program p = entity().getInterpreter().getProgram(programId);
 
+		// Check if program exists
+		Program p = entity().getInterpreter().getProgram(programId);
 		if (p == null) {
-			throw new InvalidOperation(Message.noSuchProgram(programId));
+			entity().println(Message.noSuchProgram(programId));
+			return;
 		}
 
+		// Attempt to write to file
 		try {
 			BufferedWriter writer = new BufferedWriter(new FileWriter(filename));
 			writer.write(p.getAsText());
 			writer.close();
 		} catch (IOException e) {
-			// Do nothing
+			throw new InvalidOperation("Não foi possível criar o ficheiro.");
 		}
     }
 }
