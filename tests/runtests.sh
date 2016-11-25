@@ -31,7 +31,7 @@ ScriptName="$0"
 cd "$(dirname "$0")"
 DIR_current="$(pwd)"
 
-DIR_tests="$DIR_current/tests"
+DIR_tests="$DIR_current/tests2"
 DIR_javaApp="$DIR_current/../bld"
 EXEC_javaApp="pex.app.App"
 
