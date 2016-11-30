@@ -41,9 +41,9 @@ usage_content=( "Usage: $(basename $ScriptName)"
 "HELP:
 	-h : Shows this message"
 "DIRECTORIES:
-	-a  : Set Java app directory
-	-cp : Set CLASSPATH environment variable
-	-t  : Set tests directory"
+	-a : Set Java app directory
+	-s : Set \"support\" directory (containing any necessary packages)
+	-t : Set tests directory"
 )
 
 # =========== FUNCTIONS ===========
@@ -66,7 +66,7 @@ function parse_args {
 				;;
 			-cp )
 				shift
-				CLASSPATH="$1"
+				CLASSPATH="$CLASSPATH:$DIR_current/$1/*"
 				;;
 			-t )
 				shift
@@ -110,14 +110,17 @@ function print_error {
 
 # Target functionality
 function start_testing {
-	if [ ! -z "$CLASSPATH" ]; then
-		add_classpath="-cp $CLASSPATH"
+	# Copying prim.tex file to App's directory if it doesn't exist
+	if [ -f "$DIR_script/prim.tex" -a ! -f "$DIR_javaApp/prim.tex" ]; then
+		cp "$DIR_script/prim.tex" "$DIR_javaApp/prim.tex"
 	fi
+
+	# Run tests
 	for x in $DIR_tests/*.in; do
 	    if [ -e ${x%.in}.import ]; then
-	        java -Dimport=${x%.in}.import -Din=$x -Dout=${x%.in}.outhyp "$EXEC_javaApp" $add_classpath
+	        java -Dimport=${x%.in}.import -Din=$x -Dout=${x%.in}.outhyp "$EXEC_javaApp"
 	    else
-	        java -Din=$x -Dout=${x%.in}.outhyp "$EXEC_javaApp" $add_classpath
+	        java -Din=$x -Dout=${x%.in}.outhyp "$EXEC_javaApp"
 	    fi
 
 	    diff ${x%.in}.out ${x%.in}.outhyp > ${x%.in}.diff

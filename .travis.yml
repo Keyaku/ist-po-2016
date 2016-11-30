@@ -11,6 +11,6 @@ script:
     - export CLASSPATH=".:support/*"
     - make
     - echo "Launching mid-course public tests"
-    - tests/runtests.sh -t "tests/tests1"
+    - tests/runtests.sh -t "tests/tests1" -s support
     - echo "Launching mid-course private tests"
-    - tests/runtests.sh -t "tests/tests2"
+    - tests/runtests.sh -t "tests/tests2" -s support
