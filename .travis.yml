@@ -1,0 +1,15 @@
+language: java
+sudo: false
+osx_image: xcode8.1
+jdk:
+  - oraclejdk8
+  - oraclejdk7
+branches:
+    only:
+    - master
+script:
+    - make
+    - echo "Launching mid-course public tests"
+    - tests/runtests.sh -t "tests/tests1"
+    - echo "Launching mid-course private tests"
+    - tests/runtests.sh -t "tests/tests2"
