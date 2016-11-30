@@ -5,22 +5,20 @@ PACKAGEDIR ?= pex
 APPDIR ?= $(PACKAGEDIR).app.App
 ZIPFILE = $(OBJDIR)/proj.jar
 
-CLASSPATH = .:support/*
-
 EXEC = `find $(PACKAGEDIR) -name "*.java"`
 
 # General rules
 all:
-	javac $(EXEC) -d $(OBJDIR) -cp $(CLASSPATH)
+	javac $(EXEC) -d $(OBJDIR)
 
 docs: all
-	javadoc $(EXEC) -d $(DOCDIR) -cp $(CLASSPATH)
+	javadoc $(EXEC) -d $(DOCDIR)
 
 zip: #$(DOCDIR)
 	jar cvf $(ZIPFILE) $(EXEC) #$(DOCDIR)/*.html
 
 run:
-	cd bld; java $(APPDIR) -cp $(CLASSPATH); cd ..
+	cd bld; java $(APPDIR); cd ..
 
 swing:
 	cd bld; java -Dui=swing $(APPDIR); cd ..
