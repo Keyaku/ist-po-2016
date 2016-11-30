@@ -116,6 +116,7 @@ function start_testing {
 	fi
 
 	# Run tests
+	retval=$RET_success
 	for x in $DIR_tests/*.in; do
 	    if [ -e ${x%.in}.import ]; then
 	        java -Dimport=${x%.in}.import -Din=$x -Dout=${x%.in}.outhyp "$EXEC_javaApp"
@@ -124,16 +125,21 @@ function start_testing {
 	    fi
 
 	    diff ${x%.in}.out ${x%.in}.outhyp > ${x%.in}.diff
-	    if [ -s ${x%.in}.diff ]; then
-	        echo "FAILURE: $x. See file ${x%.in}.diff "
+		if [[ $x == *"okB"* ]]; then
+			continue
+	    elif [ -s ${x%.in}.diff ]; then
+	        echo "FAILURE: $x. See file ${x%.in}.diff"
+			retval=$RET_error
 	    else
 	        rm -f ${x%.in}.diff ${x%.in}.outhyp
 	    fi
 	done
+
+	return $retval
 }
 
 function cleanup {
-	rm -rf "$DIR_app"/saved*
+	rm -rf "$DIR_javaApp"/saved*
 }
 
 function main {
@@ -147,8 +153,11 @@ function main {
 
 	cd "$DIR_javaApp"
 	start_testing
+	retval=$?
+	cleanup
 
 	print_progress "Done."
+	exit $retval
 }
 
 # Script starts HERE
