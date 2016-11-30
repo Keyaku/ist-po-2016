@@ -64,7 +64,7 @@ function parse_args {
 				shift
 				DIR_javaApp="$DIR_current/$1"
 				;;
-			-cp )
+			-s )
 				shift
 				CLASSPATH="$CLASSPATH:$DIR_current/$1/*"
 				;;
