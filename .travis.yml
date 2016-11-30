@@ -8,6 +8,7 @@ branches:
     only:
     - master
 script:
+    - export CLASSPATH=".:support/*"
     - make
     - echo "Launching mid-course public tests"
     - tests/runtests.sh -t "tests/tests1"
