@@ -28,11 +28,12 @@ Err="${BRed}Error${Red}:${RCol}"
 ScriptName="$0"
 
 # Files & Directories
-cd "$(dirname "$0")"
 DIR_current="$(pwd)"
+cd "$(dirname "$0")"
+DIR_script="$(pwd)"
 
-DIR_tests="$DIR_current/tests2"
-DIR_javaApp="$DIR_current/../bld"
+DIR_tests="$DIR_script/tests2"
+DIR_javaApp="$DIR_script/../bld"
 EXEC_javaApp="pex.app.App"
 
 # String Arrays
