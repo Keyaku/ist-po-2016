@@ -40,8 +40,9 @@ usage_content=( "Usage: $(basename $ScriptName)"
 "HELP:
 	-h : Shows this message"
 "DIRECTORIES:
-	-a : Add Java app directory
-	-t : Add tests directory"
+	-a  : Set Java app directory
+	-cp : Set CLASSPATH environment variable
+	-t  : Set tests directory"
 )
 
 # =========== FUNCTIONS ===========
@@ -61,6 +62,10 @@ function parse_args {
 			-a )
 				shift
 				DIR_javaApp="$DIR_current/$1"
+				;;
+			-cp )
+				shift
+				CLASSPATH="$1"
 				;;
 			-t )
 				shift
@@ -104,11 +109,14 @@ function print_error {
 
 # Target functionality
 function start_testing {
+	if [ ! -z "$CLASSPATH" ]; then
+		add_classpath="-cp $CLASSPATH"
+	fi
 	for x in $DIR_tests/*.in; do
 	    if [ -e ${x%.in}.import ]; then
-	        java -Dimport=${x%.in}.import -Din=$x -Dout=${x%.in}.outhyp "$EXEC_javaApp"
+	        java -Dimport=${x%.in}.import -Din=$x -Dout=${x%.in}.outhyp "$EXEC_javaApp" $add_classpath
 	    else
-	        java -Din=$x -Dout=${x%.in}.outhyp "$EXEC_javaApp"
+	        java -Din=$x -Dout=${x%.in}.outhyp "$EXEC_javaApp" $add_classpath
 	    fi
 
 	    diff ${x%.in}.out ${x%.in}.outhyp > ${x%.in}.diff
