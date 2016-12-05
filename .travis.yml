@@ -2,7 +2,7 @@ language: java
 sudo: false
 os:
     - linux
-    - osx
+#    - osx
 jdk:
     - oraclejdk8
 branches:
@@ -10,4 +10,5 @@ branches:
     - master
 script:
     - make
-    - for x in tests/*; do if [ -d "$x" ]; then echo "Running through \"$x\""; tests/runtests.sh -t "$x" -s support; fi; done
+    - for x in tests/*; do if [ -d "$x" ]; then echo "Running through \"$x\""; tests/runtests.sh -t "$x" -s support; if [ $? -ne 0 ]; then test_success=false; fi; fi; done
+    - exit $test_success
