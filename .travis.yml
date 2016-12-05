@@ -9,8 +9,8 @@ branches:
 script:
     - make
     - for x in tests/*; do
-        - if [ -d "$x" ]; then
-            - echo "Running through \"$x\""
-            - tests/runtests.sh -t "$x" -s support
-        - fi
+    -   if [ -d "$x" ]; then
+    -     echo "Running through \"$x\""
+    -     tests/runtests.sh -t "$x" -s support
+    -   fi
     - done
