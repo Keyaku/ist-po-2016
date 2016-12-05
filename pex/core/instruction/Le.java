@@ -17,7 +17,13 @@ public class Le extends BinaryExpression {
 	}
 
 	public Literal evaluate() {
-		// FIXME
-		return null;
+		IntegerLiteral lit1 = (IntegerLiteral) getFirstArgument();
+		IntegerLiteral lit2 = (IntegerLiteral) getSecondArgument();
+		int result = 0;
+
+		if (lit1.intValue() <= lit2.intValue()) {
+			result = 1;
+		}
+		return new IntegerLiteral(result);
 	}
 }
