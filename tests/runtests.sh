@@ -27,15 +27,6 @@ readonly Err="${BRed}Error${Red}:${RCol}"
 
 readonly ScriptName="$0"
 
-# Files & Directories
-readonly DIR_current="$(pwd)"
-cd "$(dirname "$0")"
-readonly DIR_script="$(pwd)"
-
-DIR_tests="$DIR_script/tests2"
-DIR_javaApp="$DIR_script/../bld"
-EXEC_javaApp="pex.app.App"
-
 # String Arrays
 readonly usage_content=( "Usage: $(basename $ScriptName)"
 "HELP:
@@ -45,6 +36,13 @@ readonly usage_content=( "Usage: $(basename $ScriptName)"
 	-s : Set \"support\" directory (containing any necessary packages)
 	-t : Set tests directory"
 )
+
+# Files & Directories
+readonly DIR_current="$(pwd)"
+readonly EXEC_javaApp="pex.app.App"
+
+# Options
+parent_test=true
 
 # =========== FUNCTIONS ===========
 function usage {
@@ -59,9 +57,12 @@ function parse_args {
 
 	while [ $# -gt 0 ]; do
 		case $1 in
+			# DIRECTORIES
 			-a )
 				shift
-				DIR_javaApp="$DIR_current/$1"
+				cd "$1" > /dev/null
+				DIR_javaApp="$(pwd)"
+				cd - > /dev/null
 				;;
 			-s )
 				shift
@@ -69,8 +70,12 @@ function parse_args {
 				;;
 			-t )
 				shift
-				DIR_tests="$DIR_current/$1"
+				cd "$1" > /dev/null
+				DIR_tests="$(pwd)"
+				cd - > /dev/null
+				parent_test=false
 				;;
+			# HELP
 			-h|--help )
 				usage
 				exit $RET_usage
@@ -88,12 +93,24 @@ function check_env {
 	if [ ! -d "$DIR_javaApp" ]; then
 		print_error "App directory \"$DIR_javaApp\" is not valid"
 		return $RET_error
-	elif [ ! -d "$DIR_tests" ]; then
+	elif [ $parent_test == false -a ! -d "$DIR_tests" ]; then
 		print_error "Tests directory \"$DIR_tests\" is not valid"
 		return $RET_error
 	fi
+}
 
+function set_env {
+	# Defining script directories
+	cd "$(dirname "$0")"
+	DIR_script="$(pwd)"
+
+	DIR_javaApp="$DIR_script/../bld"
 	cd "$DIR_javaApp"
+
+	# Copying prim.tex file to App's directory if it doesn't exist
+	if [ -f "$DIR_script/prim.tex" -a ! -f "$DIR_javaApp/prim.tex" ]; then
+		cp "$DIR_script/prim.tex" "$DIR_javaApp/prim.tex"
+	fi
 }
 
 function print_progress {
@@ -115,15 +132,22 @@ function print_error {
 }
 
 # Target functionality
-function start_testing {
-	# Copying prim.tex file to App's directory if it doesn't exist
-	if [ -f "$DIR_script/prim.tex" -a ! -f "$DIR_javaApp/prim.tex" ]; then
-		cp "$DIR_script/prim.tex" "$DIR_javaApp/prim.tex"
+function test_dir {
+	# $1 : test directory
+	if [ $# -lt 1 ]; then
+		print_error "test_dir(): No arguments given."
+		return $RET_error
+	elif [ ! -d "$1" ]; then
+		print_error "Given argument is not a directory."
+		return $RET_error
+	elif [ -z "$(ls $1/*.in 2> /dev/null)" -o -z "$(ls $1/*.out 2> /dev/null)" ]; then
+		print_error "Given directory does not contain any test files."
+		return $RET_error
 	fi
 
 	# Run tests
-	retval=$RET_success
-	for x in $DIR_tests/*.in; do
+	local retval=$RET_success
+	for x in $1/*.in; do
 	    if [ -e ${x%.in}.import ]; then
 	        java -Dimport=${x%.in}.import -Din=$x -Dout=${x%.in}.outhyp "$EXEC_javaApp"
 	    else
@@ -150,17 +174,28 @@ function cleanup {
 
 function main {
 	parse_args "$@"
+	set_env
 	check_env
-
 	if [ $? -eq $RET_error ]; then
 		usage
 		exit $RET_error
 	fi
 
-	cd "$DIR_javaApp"
-	start_testing
-	retval=$?
+	local retval=$RET_success
+	if [ $parent_test == true ]; then
+		for x in $DIR_script/*/; do
+			print_progress "Running through \"$x\""
+			test_dir "$x"
+			fail_count=$(($fail_count + $?))
+		done
+	else
+		test_dir "$DIR_tests"
+	fi
 	cleanup
+
+	if [ $fail_count -gt 0 ]; then
+		retval=$RET_error
+	fi
 
 	exit $retval
 }
