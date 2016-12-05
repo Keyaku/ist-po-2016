@@ -56,7 +56,6 @@ function usage {
 
 function parse_args {
 	if [ $# -eq 0 ]; then return 0; fi
-	print_progress "Parsing args..."
 
 	while [ $# -gt 0 ]; do
 		case $1 in
@@ -82,7 +81,6 @@ function parse_args {
 		shift
 	done
 
-	print_progress "Parsed args."
 	return $RET_success
 }
 
@@ -100,12 +98,20 @@ function check_env {
 
 function print_progress {
 	# $1 : text to print
-	printf "\n${BYel}$1\n${RCol}"
+	# $2+: formatting args
+	printf "\n${BYel}$1\n${RCol}" ${@:2}
+}
+
+function print_failure {
+	# $1 : text to print
+	# $2+: formatting args
+	printf "\n${URed}FAILURE${Red}:${RCol} $1\n" ${@:2}
 }
 
 function print_error {
 	# $1 : text to print
-	printf "\n${BRed}ERROR${Red}:${RCol} $1\n"
+	# $2+: formatting args
+	printf "\n${BRed}ERROR${Red}:${RCol} $1\n" ${@:2}
 }
 
 # Target functionality
@@ -128,7 +134,7 @@ function start_testing {
 		if [[ $x == *"okB"* ]]; then
 			continue
 	    elif [ -s ${x%.in}.diff ]; then
-	        echo "FAILURE: $x. See file ${x%.in}.diff"
+	        print_failure "$x. See file ${x%.in}.diff"
 			retval=$RET_error
 	    else
 	        rm -f ${x%.in}.diff ${x%.in}.outhyp
@@ -156,7 +162,6 @@ function main {
 	retval=$?
 	cleanup
 
-	print_progress "Done."
 	exit $retval
 }
 
