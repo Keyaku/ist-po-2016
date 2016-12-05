@@ -149,12 +149,17 @@ function test_dir {
 
 	# Run tests
 	local retval=$RET_success
+	local import_flag=""
 	for x in $1/*.in; do
+		# Setting import flag
 	    if [ -e ${x%.in}.import ]; then
-	        java -Dimport=${x%.in}.import -Din=$x -Dout=${x%.in}.outhyp "$EXEC_javaApp"
-	    else
-	        java -Din=$x -Dout=${x%.in}.outhyp "$EXEC_javaApp"
+			import_flag="-Dimport=${x%.in}.import"
 	    fi
+
+		java $import_flag -Din=$x -Dout=${x%.in}.outhyp "$EXEC_javaApp"
+		if [ $? -ne 0 ]; then
+			return $RET_error
+		fi
 
 	    diff ${x%.in}.out ${x%.in}.outhyp > ${x%.in}.diff
 		if [[ $x == *"okB"* ]]; then
