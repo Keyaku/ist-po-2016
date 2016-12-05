@@ -17,7 +17,10 @@ public class Mul extends BinaryExpression {
 	}
 
 	public Literal evaluate() {
-		// FIXME
+		IntegerLiteral lit1 = (IntegerLiteral) getFirstArgument();
+		IntegerLiteral lit2 = (IntegerLiteral) getSecondArgument();
+		int result = lit1.intValue() * lit2.intValue();
+		return new IntegerLiteral(result);
 		return null;
 	}
 }
