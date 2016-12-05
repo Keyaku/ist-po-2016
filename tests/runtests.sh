@@ -93,6 +93,24 @@ function parse_args {
 	return $RET_success
 }
 
+function print_progress {
+	# $1 : text to print
+	# $2+: formatting args
+	printf "\n${BYel}$1\n${RCol}" ${@:2}
+}
+
+function print_failure {
+	# $1 : text to print
+	# $2+: formatting args
+	printf "\n${URed}FAILURE${Red}:${RCol} $1\n" ${@:2}
+}
+
+function print_error {
+	# $1 : text to print
+	# $2+: formatting args
+	printf "\n${BRed}ERROR${Red}:${RCol} $1\n" ${@:2}
+}
+
 function check_env {
 	if [ ! -d "$DIR_javaApp" ]; then
 		print_error "App directory \"$DIR_javaApp\" is not valid"
@@ -113,28 +131,16 @@ function set_env {
 	fi
 	cd "$DIR_javaApp"
 
-	# Copying prim.tex file to App's directory if it doesn't exist
-	if [ -f "$DIR_script/prim.tex" -a ! -f "$DIR_javaApp/prim.tex" ]; then
-		cp "$DIR_script/prim.tex" "$DIR_javaApp/prim.tex"
+	# Copying exclusive files to App's directory if they don't exist
+	copy_to_app_dir "$DIR_script/prim.tex"
+	copy_to_app_dir "$DIR_script/ex33.pex"
+}
+
+function copy_to_app_dir {
+	myfile="$(basename "$1")"
+	if [ -f "$1" -a ! -f "$DIR_javaApp/$myfile" ]; then
+		cp "$1" "$DIR_javaApp/$myfile"
 	fi
-}
-
-function print_progress {
-	# $1 : text to print
-	# $2+: formatting args
-	printf "\n${BYel}$1\n${RCol}" ${@:2}
-}
-
-function print_failure {
-	# $1 : text to print
-	# $2+: formatting args
-	printf "\n${URed}FAILURE${Red}:${RCol} $1\n" ${@:2}
-}
-
-function print_error {
-	# $1 : text to print
-	# $2+: formatting args
-	printf "\n${BRed}ERROR${Red}:${RCol} $1\n" ${@:2}
 }
 
 # Target functionality
