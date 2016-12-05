@@ -19,4 +19,12 @@ public abstract class VariadicExpression extends CompositeExpression {
 	public List<Expression> getArguments() {
 		return _args;
 	}
+
+	public String getAsText() {
+		String result = "";
+		for (Expression exp : _args) {
+			result += " " + exp.getAsText();
+		}
+		return result;
+	}
 }

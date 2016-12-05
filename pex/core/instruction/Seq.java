@@ -12,11 +12,7 @@ public class Seq extends VariadicExpression {
 	}
 
 	public String getAsText() {
-		String result = "(seq";
-		for (Expression exp : getArguments()) {
-			result += " " + exp.getAsText();
-		}
-		return result + ")";
+		return "(seq" + super.getAsText() + ")";
 	}
 
 	public Literal evaluate() {
