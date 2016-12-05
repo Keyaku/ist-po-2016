@@ -80,7 +80,7 @@ public class NewParser {
             return new StringLiteral(_tokenizer.sval);
 
         case StreamTokenizer.TT_WORD:
-            return new Identifier(_tokenizer.sval /* FIXME: may need aditional parameters */);
+            return new Identifier(_tokenizer.sval);
 
         case '(':
             Expression exp = parseCompositeExpression();
