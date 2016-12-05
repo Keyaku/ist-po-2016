@@ -10,4 +10,4 @@ branches:
     - master
 script:
     - make
-    - tests/runtests.sh -s support
+    - tests/runtests.sh

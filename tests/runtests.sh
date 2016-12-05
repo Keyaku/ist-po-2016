@@ -66,7 +66,9 @@ function parse_args {
 				;;
 			-s )
 				shift
-				CLASSPATH="$CLASSPATH:$DIR_current/$1/*"
+				cd "$1" > /dev/null
+				CLASSPATH="$CLASSPATH:$(pwd)/*"
+				cd - > /dev/null
 				;;
 			-t )
 				shift
