@@ -156,7 +156,7 @@ function test_dir {
 			import_flag="-Dimport=${x%.in}.import"
 	    fi
 
-		java $import_flag -Din=$x -Dout=${x%.in}.outhyp -cp $CLASSPATH "$EXEC_javaApp"
+		java $import_flag -Din=$x -Dout=${x%.in}.outhyp "$EXEC_javaApp"
 		if [ $? -ne 0 ]; then
 			return $RET_error
 		fi
