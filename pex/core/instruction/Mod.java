@@ -21,6 +21,5 @@ public class Mod extends BinaryExpression {
 		IntegerLiteral lit2 = (IntegerLiteral) getSecondArgument();
 		int result = lit1.intValue() % lit2.intValue();
 		return new IntegerLiteral(result);
-		return null;
 	}
 }
