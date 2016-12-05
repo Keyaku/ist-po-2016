@@ -2,42 +2,42 @@
 
 # =========== CONSTANTS ===========
 # Return values
-RET_success=0
-RET_error=1
-RET_usage=2
-RET_help=2
+readonly RET_success=0
+readonly RET_error=1
+readonly RET_usage=2
+readonly RET_help=2
 
 # Colors
-RCol='\033[0m'					# Text Reset
-Red='\033[0;31m'				# Red, for small details
-Whi='\033[0;37m'				# White, for small details
-Yel='\033[0;33m'				# Yellow, for mid-building
-BGre='\033[1;32m'				# Bold Green, for successes
-BWhi='\033[1;37m'				# Bold White, when beginning something
-BRed='\033[1;31m'				# Bold Red, when an error occurred
-BYel='\033[1;33m'				# Bold Yellow, when building stuff
-UWhi='\033[4;37m'				# Underline White, for commands
-URed='\033[4;31m'				# Underline Red, for warnings
-UBlu='\033[4;34m'				# Underline Blue, for links
+readonly RCol='\033[0m'                 # Text Reset
+readonly Red='\033[0;31m'               # Red, for small details
+readonly Whi='\033[0;37m'               # White, for small details
+readonly Yel='\033[0;33m'               # Yellow, for mid-building
+readonly BGre='\033[1;32m'              # Bold Green, for successes
+readonly BWhi='\033[1;37m'              # Bold White, when beginning something
+readonly BRed='\033[1;31m'              # Bold Red, when an error occurred
+readonly BYel='\033[1;33m'              # Bold Yellow, when building stuff
+readonly UWhi='\033[4;37m'              # Underline White, for commands
+readonly URed='\033[4;31m'              # Underline Red, for warnings
+readonly UBlu='\033[4;34m'              # Underline Blue, for links
 
 # Strings
-Note="${UWhi}Notice${Whi}:${RCol}"
-Warn="${BYel}Warning${Yel}:${RCol}"
-Err="${BRed}Error${Red}:${RCol}"
+readonly Note="${UWhi}Notice${Whi}:${RCol}"
+readonly Warn="${BYel}Warning${Yel}:${RCol}"
+readonly Err="${BRed}Error${Red}:${RCol}"
 
-ScriptName="$0"
+readonly ScriptName="$0"
 
 # Files & Directories
-DIR_current="$(pwd)"
+readonly DIR_current="$(pwd)"
 cd "$(dirname "$0")"
-DIR_script="$(pwd)"
+readonly DIR_script="$(pwd)"
 
 DIR_tests="$DIR_script/tests2"
 DIR_javaApp="$DIR_script/../bld"
 EXEC_javaApp="pex.app.App"
 
 # String Arrays
-usage_content=( "Usage: $(basename $ScriptName)"
+readonly usage_content=( "Usage: $(basename $ScriptName)"
 "HELP:
 	-h : Shows this message"
 "DIRECTORIES:
