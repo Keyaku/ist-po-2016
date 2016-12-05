@@ -1,8 +1,11 @@
 language: java
 sudo: false
+os:
+    - linux
+    - osx
 osx_image: xcode8.1
 jdk:
-  - oraclejdk8
+    - oraclejdk8
 branches:
     only:
     - master
