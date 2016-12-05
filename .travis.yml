@@ -8,7 +8,9 @@ branches:
     - master
 script:
     - make
-    - echo "Launching mid-course public tests"
-    - tests/runtests.sh -t "tests/tests1" -s support
-    - echo "Launching mid-course private tests"
-    - tests/runtests.sh -t "tests/tests2" -s support
+    - for x in tests/*; do
+        - if [ -d "$x" ]; then
+            - echo "Running through \"$x\""
+            - tests/runtests.sh -t "$x" -s support
+        - fi
+    - done
