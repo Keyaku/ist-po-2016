@@ -52,6 +52,14 @@ function usage {
     exit $RET_usage
 }
 
+function get_absolute_dir {
+	# $1 : directory to parse
+	cd "$1" > /dev/null
+	temp_dir="$(pwd)"
+	cd - > /dev/null
+	echo "$temp_dir"
+}
+
 function parse_args {
 	if [ $# -eq 0 ]; then return 0; fi
 
@@ -60,21 +68,15 @@ function parse_args {
 			# DIRECTORIES
 			-a )
 				shift
-				cd "$1" > /dev/null
-				DIR_javaApp="$(pwd)"
-				cd - > /dev/null
+				DIR_javaApp="$(get_absolute_dir "$1")"
 				;;
 			-s )
 				shift
-				cd "$1" > /dev/null
-				CLASSPATH="$CLASSPATH:$(pwd)/*"
-				cd - > /dev/null
+				CLASSPATH="$CLASSPATH:$(get_absolute_dir "$1")/*"
 				;;
 			-t )
 				shift
-				cd "$1" > /dev/null
-				DIR_tests="$(pwd)"
-				cd - > /dev/null
+				DIR_tests="$(get_absolute_dir "$1")"
 				parent_test=false
 				;;
 			# HELP
