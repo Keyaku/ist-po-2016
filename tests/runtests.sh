@@ -108,7 +108,9 @@ function set_env {
 	cd "$(dirname "$0")"
 	DIR_script="$(pwd)"
 
-	DIR_javaApp="$DIR_script/../bld"
+	if [ -z "$DIR_javaApp" ]; then
+		DIR_javaApp="$DIR_script/../bld"
+	fi
 	cd "$DIR_javaApp"
 
 	# Copying prim.tex file to App's directory if it doesn't exist
