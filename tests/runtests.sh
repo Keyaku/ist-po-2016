@@ -182,6 +182,7 @@ function main {
 	fi
 
 	local retval=$RET_success
+	local fail_count=0
 	if [ $parent_test == true ]; then
 		for x in $DIR_script/*/; do
 			print_progress "Running through \"$x\""
