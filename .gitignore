@@ -19,3 +19,9 @@ bld/*.jar
 # Testing files
 *.outhyp
 *.diff
+
+# Work documents
+*.pages
+*.doc*
+*.xls*
+*.ppt*
