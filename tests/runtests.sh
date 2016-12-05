@@ -67,7 +67,7 @@ function parse_args {
 			-s )
 				shift
 				cd "$1" > /dev/null
-				export CLASSPATH="$CLASSPATH:$(pwd)/*"
+				CLASSPATH="$CLASSPATH:$(pwd)/*"
 				cd - > /dev/null
 				;;
 			-t )
