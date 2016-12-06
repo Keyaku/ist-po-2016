@@ -124,10 +124,10 @@ public class NewParser {
         switch (operatorName) {
         // process no-args expressions
         case "reads":
-            return new ReadS(/* may need additional parameters */);
+            return new ReadS(/* FIXME: may need additional parameters */);
 
         case "readi":
-            return new ReadI(/* may need additional parameters */);
+            return new ReadI(/* FIXME: may need additional parameters */);
 
          // processing unary expressions
         case "neg":
@@ -138,7 +138,7 @@ public class NewParser {
 
         case "call":
             try {
-                return new Call((StringLiteral)parseArgument() /* may need additional parameter */);
+                return new Call((StringLiteral)parseArgument() /* FIXME: may need additional parameter */);
             } catch(ClassCastException cce) { // it is not a StringLiteral
                 throw new InvalidExpressionException(_tokenizer.lineno());
             }
@@ -184,7 +184,7 @@ public class NewParser {
             return new Or(parseArgument(), parseArgument());
 
         case "set":
-            return new Set(parseArgument(), parseArgument() /* may need additional parameters */);
+            return new Set(parseArgument(), parseArgument(), _program);
 
         case "while":
             return new While(parseArgument(), parseArgument());
