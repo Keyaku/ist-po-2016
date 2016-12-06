@@ -14,7 +14,13 @@ public class Or extends BinaryExpression {
 	}
 
 	public Literal evaluate() {
-		// FIXME
-		return null;
+		IntegerLiteral lit1 = (IntegerLiteral) getFirstArgument();
+		IntegerLiteral lit2 = (IntegerLiteral) getSecondArgument();
+
+		/* if arg1 is true */
+		if (lit1.intValue() != 0) {
+			return new IntegerLiteral(1);
+		}
+		return lit2.intValue() != 0 ? new IntegerLiteral(1) : new IntegerLiteral(0);
 	}
 }

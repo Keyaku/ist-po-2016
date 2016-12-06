@@ -14,7 +14,7 @@ public class Not extends UnaryExpression {
 	}
 
 	public Literal evaluate() {
-		// FIXME
-		return null;
+		IntegerLiteral lit = (IntegerLiteral) getArgument();
+		return lit1.intValue() == 0 ? new IntegerLiteral(1) : new IntegerLiteral(0);
 	}
 }

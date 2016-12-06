@@ -14,7 +14,8 @@ public class Eq extends BinaryExpression {
 	}
 
 	public Literal evaluate() {
-		// FIXME
-		return null;
+		IntegerLiteral lit1 = (IntegerLiteral) getFirstArgument();
+		IntegerLiteral lit2 = (IntegerLiteral) getSecondArgument();
+		return lit1.intValue() == lit2.intValue() ? new IntegerLiteral(1) : new IntegerLiteral(0);
 	}
 }
