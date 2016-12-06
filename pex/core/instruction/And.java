@@ -9,11 +9,8 @@ public class And extends BinaryExpression {
 		super(arg1, arg2);
 	}
 
-	public String getAsText() {
-		return "(and " +
-			getFirstArgument().getAsText()  + " " +
-			getSecondArgument().getAsText() +
-			")";
+	public String getInstructionName() {
+		return "and";
 	}
 
 	public Literal evaluate() {

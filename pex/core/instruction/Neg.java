@@ -9,8 +9,8 @@ public class Neg extends UnaryExpression {
 		super(arg);
 	}
 
-	public String getAsText() {
-		return "(neg " + getArgument().getAsText() + ")";
+	public String getInstructionName() {
+		return "neg";
 	}
 
 	public Literal evaluate() {

@@ -9,8 +9,8 @@ public class Not extends UnaryExpression {
 		super(arg);
 	}
 
-	public String getAsText() {
-		return "(not " + getArgument().getAsText() + ")";
+	public String getInstructionName() {
+		return "not";
 	}
 
 	public Literal evaluate() {

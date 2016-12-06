@@ -17,4 +17,8 @@ public abstract class UnaryExpression extends CompositeExpression {
 	public Expression getArgument() {
 		return _arg;
 	}
+
+	public String getAsText() {
+		return "(" + getInstructionName() + " " + getArgument().getAsText() + ")";
+	}
 }

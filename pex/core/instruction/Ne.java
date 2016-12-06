@@ -9,11 +9,8 @@ public class Ne extends BinaryExpression {
 		super(arg1, arg2);
 	}
 
-	public String getAsText() {
-		return "(ne " +
-			getFirstArgument().getAsText()  + " " +
-			getSecondArgument().getAsText() +
-			")";
+	public String getInstructionName() {
+		return "ne";
 	}
 
 	public Literal evaluate() {

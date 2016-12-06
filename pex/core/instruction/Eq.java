@@ -9,11 +9,8 @@ public class Eq extends BinaryExpression {
 		super(arg1, arg2);
 	}
 
-	public String getAsText() {
-		return "(eq " +
-			getFirstArgument().getAsText()  + " " +
-			getSecondArgument().getAsText() +
-			")";
+	public String getInstructionName() {
+		return "eq";
 	}
 
 	public Literal evaluate() {

@@ -21,10 +21,10 @@ public abstract class VariadicExpression extends CompositeExpression {
 	}
 
 	public String getAsText() {
-		String result = "";
+		String result = "(" + getInstructionName();
 		for (Expression exp : _args) {
 			result += " " + exp.getAsText();
 		}
-		return result;
+		return result + ")";
 	}
 }

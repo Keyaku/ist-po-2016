@@ -9,11 +9,8 @@ public class Ge extends BinaryExpression {
 		super(arg1, arg2);
 	}
 
-	public String getAsText() {
-		return "(ge " +
-			getFirstArgument().getAsText()  + " " +
-			getSecondArgument().getAsText() +
-			")";
+	public String getInstructionName() {
+		return "ge";
 	}
 
 	public Literal evaluate() {

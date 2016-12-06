@@ -35,4 +35,12 @@ public abstract class TernaryExpression extends CompositeExpression {
 	public Expression getThirdArgument() {
 		return _arg3;
 	}
+
+	public String getAsText() {
+		return "(" + getInstructionName() + " " +
+			getFirstArgument().getAsText()  + " " +
+			getSecondArgument().getAsText() + " " +
+			getThirdArgument().getAsText()  +
+			")";
+	}
 }

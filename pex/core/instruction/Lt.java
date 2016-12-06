@@ -9,11 +9,8 @@ public class Lt extends BinaryExpression {
 		super(arg1, arg2);
 	}
 
-	public String getAsText() {
-		return "(lt " +
-			getFirstArgument().getAsText()  + " " +
-			getSecondArgument().getAsText() +
-			")";
+	public String getInstructionName() {
+		return "lt";
 	}
 
 	public Literal evaluate() {

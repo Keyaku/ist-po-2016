@@ -9,11 +9,8 @@ public class Gt extends BinaryExpression {
 		super(arg1, arg2);
 	}
 
-	public String getAsText() {
-		return "(gt " +
-			getFirstArgument().getAsText()  + " " +
-			getSecondArgument().getAsText() +
-			")";
+	public String getInstructionName() {
+		return "gt";
 	}
 
 	public Literal evaluate() {

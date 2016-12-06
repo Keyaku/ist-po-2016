@@ -9,11 +9,8 @@ public class Sub extends BinaryExpression {
 		super(arg1, arg2);
 	}
 
-	public String getAsText() {
-		return "(sub " +
-			getFirstArgument().getAsText()  + " " +
-			getSecondArgument().getAsText() +
-			")";
+	public String getInstructionName() {
+		return "sub";
 	}
 
 	public Literal evaluate() {

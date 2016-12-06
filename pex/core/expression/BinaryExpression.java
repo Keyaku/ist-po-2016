@@ -26,4 +26,11 @@ public abstract class BinaryExpression extends CompositeExpression {
 	public Expression getSecondArgument() {
 		return _arg2;
 	}
+
+	public String getAsText() {
+		return "(" + getInstructionName() + " " +
+			getFirstArgument().getAsText()  + " " +
+			getSecondArgument().getAsText() +
+			")";
+	}
 }

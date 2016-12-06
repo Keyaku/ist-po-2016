@@ -14,8 +14,8 @@ public class Print extends VariadicExpression {
 		super(args);
 	}
 
-	public String getAsText() {
-		return "(print" + super.getAsText() + ")";
+	public String getInstructionName() {
+		return "print";
 	}
 
 	public Literal evaluate() {

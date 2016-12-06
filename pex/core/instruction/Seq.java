@@ -11,8 +11,8 @@ public class Seq extends VariadicExpression {
 		super(args);
 	}
 
-	public String getAsText() {
-		return "(seq" + super.getAsText() + ")";
+	public String getInstructionName() {
+		return "seq";
 	}
 
 	public Literal evaluate() {

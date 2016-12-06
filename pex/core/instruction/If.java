@@ -9,12 +9,8 @@ public class If extends TernaryExpression {
 		super(arg1, arg2, arg3);
 	}
 
-	public String getAsText() {
-		return "(if " +
-			getFirstArgument().getAsText()  + " " +
-			getSecondArgument().getAsText() + " " +
-			getThirdArgument().getAsText()  +
-			")";
+	public String getInstructionName() {
+		return "if";
 	}
 
 	public Literal evaluate() {

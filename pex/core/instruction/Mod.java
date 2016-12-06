@@ -9,11 +9,8 @@ public class Mod extends BinaryExpression {
 		super(arg1, arg2);
 	}
 
-	public String getAsText() {
-		return "(mod " +
-			getFirstArgument().getAsText()  + " " +
-			getSecondArgument().getAsText() +
-			")";
+	public String getInstructionName() {
+		return "mod";
 	}
 
 	public Literal evaluate() {

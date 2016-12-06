@@ -13,8 +13,8 @@ public class Call extends UnaryExpression {
 		super(arg);
 	}
 
-	public String getAsText() {
-		return "(call " + getArgument().getAsText() + ")";
+	public String getInstructionName() {
+		return "call";
 	}
 
 	public Literal evaluate() {
