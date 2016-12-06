@@ -4,7 +4,7 @@ import java.util.List;
 
 import pex.AppIO;
 
-// TODO: remove these if we're to put Expression right under core/
+
 import pex.core.expression.*;
 
 public class Print extends VariadicExpression {

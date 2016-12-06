@@ -2,7 +2,7 @@ package pex.core.instruction;
 
 import java.util.List;
 
-// TODO: remove these if we're to put Expression right under core/
+
 import pex.core.expression.*;
 
 

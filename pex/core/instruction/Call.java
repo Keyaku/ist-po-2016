@@ -2,7 +2,7 @@ package pex.core.instruction;
 
 import pex.core.Program;
 
-// TODO: remove these if we're to put Expression right under core/
+
 import pex.core.expression.*;
 
 

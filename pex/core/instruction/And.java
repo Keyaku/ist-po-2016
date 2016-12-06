@@ -1,6 +1,6 @@
 package pex.core.instruction;
 
-// TODO: remove these if we're to put Expression right under core/
+
 import pex.core.expression.*;
 
 
