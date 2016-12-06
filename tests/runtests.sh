@@ -160,10 +160,13 @@ function test_dir {
 	# Run tests
 	local retval=$RET_success
 	local import_flag=""
+	local fail_count=0
 	for x in $1/*.in; do
 		# Setting import flag
 	    if [ -e ${x%.in}.import ]; then
 			import_flag="-Dimport=${x%.in}.import"
+		else
+			import_flag=""
 	    fi
 
 		java $import_flag -Din=$x -Dout=${x%.in}.outhyp "$EXEC_javaApp"
@@ -177,10 +180,15 @@ function test_dir {
 	    elif [ -s ${x%.in}.diff ]; then
 	        print_failure "$x. See file ${x%.in}.diff"
 			retval=$RET_error
+			fail_count=$(($fail_count + 1))
 	    else
 	        rm -f ${x%.in}.diff ${x%.in}.outhyp
 	    fi
 	done
+
+	if [ $fail_count -gt 0 ]; then
+		print_failure "Failed $fail_count tests."
+	fi
 
 	return $retval
 }
