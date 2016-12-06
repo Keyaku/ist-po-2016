@@ -161,7 +161,9 @@ function test_dir {
 	local retval=$RET_success
 	local import_flag=""
 	local fail_count=0
+	local total_count=0
 	for x in $1/*.in; do
+		total_count=$(($total_count + 1))
 		# Setting import flag
 	    if [ -e ${x%.in}.import ]; then
 			import_flag="-Dimport=${x%.in}.import"
@@ -187,7 +189,7 @@ function test_dir {
 	done
 
 	if [ $fail_count -gt 0 ]; then
-		print_failure "Failed $fail_count tests."
+		print_failure "Failed $fail_count / $total_count tests."
 	fi
 
 	return $retval
