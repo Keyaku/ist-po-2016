@@ -16,7 +16,9 @@ public class Seq extends VariadicExpression {
 	}
 
 	public Literal evaluate() {
-		// FIXME
-		return null;
+		for (Expression arg : getArguments()) {
+			arg.evaluate();
+		}
+		return getArguments().get(getArguments().size() - 1).evaluate();
 	}
 }
