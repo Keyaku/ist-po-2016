@@ -179,6 +179,7 @@ function test_dir {
 	local total_count=0
 	for x in $1/*.in; do
 		total_count=$(($total_count + 1))
+		local test_name="$(basename $1)/$(basename $x)"
 		# Setting import flag
 	    if [ -e ${x%.in}.import ]; then
 			import_flag="-Dimport=${x%.in}.import"
@@ -195,12 +196,12 @@ function test_dir {
 		if [[ $x == *"okB"* ]]; then
 			continue
 	    elif [ -s ${x%.in}.diff ]; then
-	        print_failure "$x. See file ${x%.in}.diff"
+	        print_failure "$test_name. See file ${test_name%.in}.diff"
 			retval=$RET_error
 			fail_count=$(($fail_count + 1))
 	    else
 			if [ $BOOL_showAll == true ]; then
-				print_success "$x"
+				print_success "$test_name"
 			fi
 	        rm -f ${x%.in}.diff ${x%.in}.outhyp
 	    fi
