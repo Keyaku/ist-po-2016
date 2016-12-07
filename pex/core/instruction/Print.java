@@ -20,6 +20,7 @@ public class Print extends VariadicExpression {
 	public Literal evaluate() {
 		Literal retval = null;
 		String str = "";
+
 		for (Expression exp : getArguments()) {
 			retval = exp.evaluate();
 			// FIXME: This kind of specification is highly unappreciated
@@ -30,6 +31,7 @@ public class Print extends VariadicExpression {
 				str += retval.getAsText();
 			}
 		}
+
 		_io.println(str);
 		return retval;
 	}
