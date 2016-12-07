@@ -14,7 +14,14 @@ public class While extends BinaryExpression {
 	}
 
 	public Literal evaluate() {
-		// FIXME
-		return null;
+		IntegerLiteral cond = (IntegerLiteral) getFirstArgument().evaluate();
+		Literal loopExp = getSecondArgument().evaluate();
+
+		while (cond.intValue() != 0) {
+			loopExp.evaluate();
+			cond = cond.evaluate();
+		}
+
+		return cond;
 	}
 }
