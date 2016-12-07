@@ -1,6 +1,5 @@
 package pex.core.instruction;
 
-
 import pex.core.expression.*;
 
 
@@ -15,12 +14,12 @@ public class If extends TernaryExpression {
 
 	public Literal evaluate() {
 		IntegerLiteral cond = (IntegerLiteral) getFirstArgument().evaluate();
-		Literal ifTrue = getSecondArgument().evaluate();
-		Literal ifFalse = getThirdArgument().evaluate();
+		Expression ifTrue = getSecondArgument();
+		Expression ifFalse = getThirdArgument();
 
 		if (cond.intValue() != 0) { // if true
-			return ifTrue;
+			return ifTrue.evaluate();
 		}
-		return ifFalse;
+		return ifFalse.evaluate();
 	}
 }
