@@ -10,9 +10,14 @@ import pex.core.expression.*;
 public class Program implements Serializable {
 	private String _name = "";
 	private List<Expression> _exps = new ArrayList<Expression>();
+	private Interpreter _parent;
 
 	public Program(String name) {
 		_name = name;
+	}
+
+	public void setInterpreter(Interpreter value) {
+		_parent = value;
 	}
 
 	public String getName() {
@@ -33,11 +38,11 @@ public class Program implements Serializable {
 	}
 
 	public void setIdentifierValue(Identifier id, Literal value) {
-		// FIXME: what do we do here?
+		_parent.setIdentifierValue(id, value);
 	}
 
 	public Literal getIdentifierValue(Identifier id) {
-		return id.evaluate();
+		return _parent.getIdentifierValue(id);
 	}
 
 	public Literal execute() {
