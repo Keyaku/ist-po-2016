@@ -14,12 +14,14 @@ public class Or extends BinaryExpression {
 
 	public Literal evaluate() {
 		IntegerLiteral lit1 = (IntegerLiteral) getFirstArgument().evaluate();
-		IntegerLiteral lit2 = (IntegerLiteral) getSecondArgument().evaluate();
 
-		if (lit1.intValue() == 1 || lit2.intValue() == 1) {
-			return new IntegerLiteral(1);
+		if (lit1.intValue() == 0) {
+			IntegerLiteral lit2 = (IntegerLiteral) getSecondArgument().evaluate();
+			if (lit2.intValue() == 0) {
+				return new IntegerLiteral(0);
+			}
 		}
 
-		return new IntegerLiteral(0);
+		return new IntegerLiteral(1);
 	}
 }
