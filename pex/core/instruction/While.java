@@ -15,11 +15,11 @@ public class While extends BinaryExpression {
 
 	public Literal evaluate() {
 		IntegerLiteral cond = (IntegerLiteral) getFirstArgument().evaluate();
-		Literal loopExp = getSecondArgument().evaluate();
+		Literal loopExp = (Literal) getSecondArgument();
 
 		while (cond.intValue() != 0) {
 			loopExp.evaluate();
-			cond = cond.evaluate();
+			cond = (IntegerLiteral) cond.evaluate();
 		}
 
 		return cond;
