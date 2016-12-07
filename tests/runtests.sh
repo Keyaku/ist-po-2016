@@ -9,16 +9,18 @@ readonly RET_help=2
 
 # Colors
 readonly RCol='\033[0m'                 # Text Reset
-readonly Red='\033[0;31m'               # Red, for small details
 readonly Whi='\033[0;37m'               # White, for small details
+readonly Red='\033[0;31m'               # Red, for small details
+readonly Gre='\033[0;32m'               # Green, for small details
 readonly Yel='\033[0;33m'               # Yellow, for mid-building
-readonly BGre='\033[1;32m'              # Bold Green, for successes
-readonly BWhi='\033[1;37m'              # Bold White, when beginning something
 readonly BRed='\033[1;31m'              # Bold Red, when an error occurred
+readonly BGre='\033[1;32m'              # Bold Green, for successes
 readonly BYel='\033[1;33m'              # Bold Yellow, when building stuff
-readonly UWhi='\033[4;37m'              # Underline White, for commands
+readonly BWhi='\033[1;37m'              # Bold White, when beginning something
 readonly URed='\033[4;31m'              # Underline Red, for warnings
+readonly UGre='\033[4;32m'              # Underline Green, for smaller successes
 readonly UBlu='\033[4;34m'              # Underline Blue, for links
+readonly UWhi='\033[4;37m'              # Underline White, for commands
 
 # Strings
 readonly Note="${UWhi}Notice${Whi}:${RCol}"
@@ -35,6 +37,8 @@ readonly usage_content=( "Usage: $(basename $ScriptName)"
 	-a : Set Java app directory
 	-s : Set \"support\" directory (containing any necessary packages)
 	-t : Set tests directory"
+"OPTIONS:
+	--show-all : Prints successes as well"
 )
 
 # Files & Directories
@@ -42,7 +46,8 @@ readonly DIR_current="$(pwd)"
 readonly EXEC_javaApp="pex.app.App"
 
 # Options
-parent_test=true
+BOOL_recursive=true
+BOOL_showAll=false
 
 # =========== FUNCTIONS ===========
 function usage {
@@ -77,7 +82,11 @@ function parse_args {
 			-t )
 				shift
 				DIR_tests="$(get_absolute_dir "$1")"
-				parent_test=false
+				BOOL_recursive=false
+				;;
+			# OPTIONS
+			--show-all )
+				BOOL_showAll=true
 				;;
 			# HELP
 			-h|--help )
@@ -99,6 +108,12 @@ function print_progress {
 	printf "\n${BYel}$1\n${RCol}" ${@:2}
 }
 
+function print_success {
+	# $1 : text to print
+	# $2+: formatting args
+	printf "\n${UGre}SUCCESS${Gre}:${RCol} $1\n${RCol}" ${@:2}
+}
+
 function print_failure {
 	# $1 : text to print
 	# $2+: formatting args
@@ -115,7 +130,7 @@ function check_env {
 	if [ ! -d "$DIR_javaApp" ]; then
 		print_error "App directory \"$DIR_javaApp\" is not valid"
 		return $RET_error
-	elif [ $parent_test == false -a ! -d "$DIR_tests" ]; then
+	elif [ $BOOL_recursive == false -a ! -d "$DIR_tests" ]; then
 		print_error "Tests directory \"$DIR_tests\" is not valid"
 		return $RET_error
 	fi
@@ -184,6 +199,9 @@ function test_dir {
 			retval=$RET_error
 			fail_count=$(($fail_count + 1))
 	    else
+			if [ $BOOL_showAll == true ]; then
+				print_success "$x"
+			fi
 	        rm -f ${x%.in}.diff ${x%.in}.outhyp
 	    fi
 	done
@@ -210,7 +228,7 @@ function main {
 
 	local retval=$RET_success
 	local fail_count=0
-	if [ $parent_test == true ]; then
+	if [ $BOOL_recursive == true ]; then
 		for x in $DIR_script/*/; do
 			print_progress "Running through \"$x\""
 			test_dir "$x"
