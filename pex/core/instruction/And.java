@@ -14,8 +14,8 @@ public class And extends BinaryExpression {
 	}
 
 	public Literal evaluate() {
-		IntegerLiteral lit1 = (IntegerLiteral) getFirstArgument();
-		IntegerLiteral lit2 = (IntegerLiteral) getSecondArgument();
+		IntegerLiteral lit1 = (IntegerLiteral) getFirstArgument().evaluate();
+		IntegerLiteral lit2 = (IntegerLiteral) getSecondArgument().evaluate();
 
 		if (lit1.intValue() == 0 || lit2.intValue() == 0) {
 			return new IntegerLiteral(0);

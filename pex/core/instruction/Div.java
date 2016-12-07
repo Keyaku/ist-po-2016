@@ -14,8 +14,8 @@ public class Div extends BinaryExpression {
 	}
 
 	public Literal evaluate() {
-		IntegerLiteral lit1 = (IntegerLiteral) getFirstArgument();
-		IntegerLiteral lit2 = (IntegerLiteral) getSecondArgument();
+		IntegerLiteral lit1 = (IntegerLiteral) getFirstArgument().evaluate();
+		IntegerLiteral lit2 = (IntegerLiteral) getSecondArgument().evaluate();
 		int result = lit1.intValue() / lit2.intValue();
 		return new IntegerLiteral(result);
 	}

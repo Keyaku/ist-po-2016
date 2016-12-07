@@ -14,7 +14,7 @@ public class Not extends UnaryExpression {
 	}
 
 	public Literal evaluate() {
-		IntegerLiteral lit = (IntegerLiteral) getArgument();
+		IntegerLiteral lit = (IntegerLiteral) getArgument().evaluate();
 		return lit.intValue() == 0 ? new IntegerLiteral(1) : new IntegerLiteral(0);
 	}
 }
