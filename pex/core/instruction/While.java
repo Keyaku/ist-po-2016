@@ -15,7 +15,7 @@ public class While extends BinaryExpression {
 
 	public Literal evaluate() {
 		IntegerLiteral cond = (IntegerLiteral) getFirstArgument().evaluate();
-		Literal loopExp = (Literal) getSecondArgument();
+		Literal loopExp = (Literal) getSecondArgument().evaluate();
 
 		while (cond.intValue() != 0) {
 			loopExp.evaluate();
