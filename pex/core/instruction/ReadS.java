@@ -7,7 +7,8 @@ import pex.core.expression.*;
 public class ReadS extends CompositeExpression {
 	private AppIO _io;
 
-	public ReadS() {
+	public ReadS(AppIO io) {
+		_io = io;
 	}
 
 	public String getInstructionName() {

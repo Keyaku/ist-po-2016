@@ -10,6 +10,7 @@ import java.util.Collection;
 import java.util.ArrayList;
 
 import pex.core.*;
+import pex.app.App;
 
 import pex.core.expression.*;
 import pex.core.instruction.*;
@@ -124,10 +125,10 @@ public class NewParser {
         switch (operatorName) {
         // process no-args expressions
         case "reads":
-            return new ReadS(/* FIXME: may need additional parameters */);
+            return new ReadS(new App());
 
         case "readi":
-            return new ReadI(/* FIXME: may need additional parameters */);
+            return new ReadI(new App());
 
          // processing unary expressions
         case "neg":
@@ -214,7 +215,7 @@ public class NewParser {
             if (operatorName.equals("seq")){
                 return new Seq(args);
 			} else {
-                return new Print(args /* FIXME: may need additional parameters */);
+                return new Print(args, new App());
 			}
 
         default:
