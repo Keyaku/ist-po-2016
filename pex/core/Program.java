@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.io.Serializable;
 
-import pex.AppIO;
-
 import pex.core.expression.*;
 
 public class Program implements Serializable {
