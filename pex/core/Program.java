@@ -41,9 +41,11 @@ public class Program implements Serializable {
 	}
 
 	public Literal execute() {
-		// FIXME: iterate the List of Expressions, evaluate each one and return
-		// the final Literal
-		return null;
+		Literal retval = null;
+		for (Expression line : _exps) {
+			retval = line.evaluate();
+		}
+		return retval;
 	}
 
 	public String getAsText() {
