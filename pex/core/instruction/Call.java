@@ -1,13 +1,12 @@
 package pex.core.instruction;
 
+import pex.parser.NewParser;
 import pex.core.Program;
-
-
 import pex.core.expression.*;
 
 
 public class Call extends UnaryExpression {
-	private Program _prog;
+	private Program _program;
 
 	public Call(Expression arg) {
 		super(arg);
@@ -18,7 +17,9 @@ public class Call extends UnaryExpression {
 	}
 
 	public Literal evaluate() {
-		// FIXME
-		return null;
+		StringLiteral lit = (StringLiteral) getArgument();
+		String name = lit.stringValue();
+		Program p = _program.getInterpreter().getProgram(name);
+		return p.execute();
 	}
 }

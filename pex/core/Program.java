@@ -20,6 +20,10 @@ public class Program implements Serializable {
 		_parent = value;
 	}
 
+	public Interpreter getInterpreter() {
+		return _parent;
+	}
+
 	public String getName() {
 		return _name;
 	}
