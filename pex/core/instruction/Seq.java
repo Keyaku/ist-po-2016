@@ -16,9 +16,10 @@ public class Seq extends VariadicExpression {
 	}
 
 	public Literal evaluate() {
+		Literal retval = null;
 		for (Expression arg : getArguments()) {
-			arg.evaluate();
+			retval = arg.evaluate();
 		}
-		return getArguments().get(getArguments().size() - 1).evaluate();
+		return retval;
 	}
 }

@@ -18,10 +18,12 @@ public class Print extends VariadicExpression {
 	}
 
 	public Literal evaluate() {
+		Literal retval = null;
 		for (Expression exp : getArguments()) {
-			StringLiteral lit = (StringLiteral) exp.evaluate();
+			retval = exp.evaluate();
+			StringLiteral lit = (StringLiteral) retval;
 			_io.println(lit.stringValue());
 		}
-		return getArguments().get(getArguments().size() - 1).evaluate();
+		return retval;
 	}
 }
