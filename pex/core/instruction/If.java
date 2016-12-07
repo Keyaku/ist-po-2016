@@ -14,7 +14,13 @@ public class If extends TernaryExpression {
 	}
 
 	public Literal evaluate() {
-		// FIXME
-		return null;
+		IntegerLiteral cond = (IntegerLiteral) getFirstArgument().evaluate();
+		Literal ifTrue = getSecondArgument().evaluate();
+		Literal ifFalse = getThirdArgument().evaluate();
+
+		if (cond.intValue() != 0) { // if true
+			return ifTrue;
+		}
+		return ifFalse;
 	}
 }
