@@ -109,7 +109,7 @@ public class NewParser {
 
     // the opening '(' was already processed
     private CompositeExpression parseCompositeExpression() throws IOException, BadNumberException, UnknownOperationException, MissingClosingParenthesisException,
-                                                                  EndOfInputException, InvalidExpressionException {
+                                                                EndOfInputException, InvalidExpressionException {
         int token = _tokenizer.nextToken();
 
         if (token != StreamTokenizer.TT_WORD) {
@@ -118,7 +118,7 @@ public class NewParser {
 
         String operatorName = _tokenizer.sval;
 
-        // The way each composite expression is inntanciated mey need to be changed since
+        // The way each composite expression is instanciated may need to be changed since
         // this depends on the specific code of each group
 
         switch (operatorName) {

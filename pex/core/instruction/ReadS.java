@@ -1,18 +1,21 @@
 package pex.core.instruction;
 
-import pex.core.expression.Literal;
-import pex.core.expression.CompositeExpression;
 import pex.AppIO;
 
+import pex.core.expression.*;
+
 public class ReadS extends CompositeExpression {
-	private AppIO _io; // FIXME: what to do with this?
+	private AppIO _io;
+
+	public ReadS() {
+	}
 
 	public String getInstructionName() {
 		return "reads";
 	}
 
 	public Literal evaluate() {
-		// FIXME
-		return null;
+		String input = _io.readString("", "");
+		return new StringLiteral(input);
 	}
 }

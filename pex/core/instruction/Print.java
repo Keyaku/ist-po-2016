@@ -8,7 +8,7 @@ import pex.AppIO;
 import pex.core.expression.*;
 
 public class Print extends VariadicExpression {
-	private AppIO _io; // FIXME: what to do with this?
+	private AppIO _io;
 
 	public Print(List<Expression> args) {
 		super(args);
@@ -19,7 +19,9 @@ public class Print extends VariadicExpression {
 	}
 
 	public Literal evaluate() {
-		// FIXME
-		return null;
+		for (Expression exp : getArguments()) {
+			_io.println(exp.getAsText());
+		}
+		return getArguments().get(getArguments().size() - 1).evaluate();
 	}
 }
