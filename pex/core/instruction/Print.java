@@ -19,16 +19,18 @@ public class Print extends VariadicExpression {
 
 	public Literal evaluate() {
 		Literal retval = null;
+		String str = "";
 		for (Expression exp : getArguments()) {
 			retval = exp.evaluate();
 			// FIXME: This kind of specification is highly unappreciated
 			if (retval instanceof StringLiteral) {
 				StringLiteral lit = (StringLiteral) retval;
-				_io.println(lit.stringValue());
+				str += lit.stringValue();
 			} else {
-				_io.println(retval.getAsText());
+				str += retval.getAsText();
 			}
 		}
+		_io.println(str);
 		return retval;
 	}
 }
