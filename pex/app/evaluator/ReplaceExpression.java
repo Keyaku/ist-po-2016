@@ -43,7 +43,7 @@ public class ReplaceExpression extends ProgramCommand {
 		// Attempt to parse expression
 		try {
 			exp = parser.parseString(inputExp.value(), entity());
-		} catch (BadSourceException|BadNumberException|InvalidExpressionException|MissingClosingParenthesisException|UnknownOperationException|EndOfInputException e) {
+		} catch (ParserException e) {
 			throw new BadExpressionException(inputExp.value());
 		}
 
