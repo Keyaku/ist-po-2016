@@ -13,12 +13,13 @@ public class While extends BinaryExpression {
 	}
 
 	public Literal evaluate() {
-		IntegerLiteral cond = (IntegerLiteral) getFirstArgument().evaluate();
-		Literal loopExp = (Literal) getSecondArgument().evaluate();
+		Expression arg1 = getFirstArgument();
+		Expression loopExp = getSecondArgument();
+		IntegerLiteral cond = (IntegerLiteral) arg1.evaluate();
 
 		while (cond.intValue() != 0) {
 			loopExp.evaluate();
-			cond = (IntegerLiteral) cond.evaluate();
+			cond = (IntegerLiteral) arg1.evaluate();
 		}
 
 		return cond;
