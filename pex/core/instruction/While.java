@@ -14,11 +14,10 @@ public class While extends BinaryExpression {
 
 	public Literal evaluate() {
 		Expression arg1 = getFirstArgument();
-		Expression loopExp = getSecondArgument();
 		IntegerLiteral cond = (IntegerLiteral) arg1.evaluate();
 
 		while (cond.intValue() != 0) {
-			loopExp.evaluate();
+			getSecondArgument().evaluate();
 			cond = (IntegerLiteral) arg1.evaluate();
 		}
 
