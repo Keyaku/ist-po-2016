@@ -139,7 +139,7 @@ public class NewParser {
 
         case "call":
             try {
-                return new Call((StringLiteral)parseArgument() /* FIXME: may need additional parameter */);
+                return new Call((StringLiteral)parseArgument(), _program);
             } catch(ClassCastException cce) { // it is not a StringLiteral
                 throw new InvalidExpressionException(_tokenizer.lineno());
             }

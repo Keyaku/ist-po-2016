@@ -8,8 +8,9 @@ import pex.core.expression.*;
 public class Call extends UnaryExpression {
 	private Program _program;
 
-	public Call(Expression arg) {
+	public Call(Expression arg, Program program) {
 		super(arg);
+		_program = program;
 	}
 
 	public String getInstructionName() {
