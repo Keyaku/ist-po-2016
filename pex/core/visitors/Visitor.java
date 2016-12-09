@@ -2,13 +2,16 @@ package pex.core.visitors;
 
 import pex.core.*;
 import pex.core.expression.*;
+import pex.core.instruction.*;
 
-public abstract class Visitor {
+public interface Visitor {
 	// Overloaders
-	public void visit(Program obj) {
-		visitProgram(obj);
-	}
-
-	// Specifications
-	public abstract void visitProgram(Program program);
+	public void visit(Program obj);
+	public void visit(Identifier obj);
+	public void visit(Literal obj);
+	public void visit(UnaryExpression obj);
+	public void visit(BinaryExpression obj);
+	public void visit(TernaryExpression obj);
+	public void visit(VariadicExpression obj);
+	public void visit(Set obj);
 }

@@ -2,7 +2,9 @@ package pex.core.expression;
 
 import java.util.List;
 
-public abstract class VariadicExpression extends CompositeExpression {
+import pex.core.visitors.*;
+
+public abstract class VariadicExpression extends CompositeExpression implements Visitable {
 	private List<Expression> _args;
 
 	/**
@@ -10,6 +12,10 @@ public abstract class VariadicExpression extends CompositeExpression {
 	*/
 	public VariadicExpression(List<Expression> args) {
 		_args = args;
+	}
+
+	public void accept(Visitor v) {
+		v.visit(this);
 	}
 
 	/**

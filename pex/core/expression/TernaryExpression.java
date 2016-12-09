@@ -1,6 +1,8 @@
 package pex.core.expression;
 
-public abstract class TernaryExpression extends CompositeExpression {
+import pex.core.visitors.*;
+
+public abstract class TernaryExpression extends CompositeExpression implements Visitable {
 	private Expression _arg1, _arg2, _arg3;
 
 	/**
@@ -10,6 +12,10 @@ public abstract class TernaryExpression extends CompositeExpression {
 		_arg1 = arg1;
 		_arg2 = arg2;
 		_arg3 = arg3;
+	}
+
+	public void accept(Visitor v) {
+		v.visit(this);
 	}
 
 	/**

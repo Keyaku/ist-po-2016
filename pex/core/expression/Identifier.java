@@ -1,14 +1,19 @@
 package pex.core.expression;
 
+import pex.core.visitors.*;
 import pex.core.Program;
 
-public class Identifier extends Expression implements Comparable<Identifier> {
+public class Identifier extends Expression implements Comparable<Identifier>, Visitable {
 	private String _name;
 	private Program _parent;
 
 	public Identifier(String name, Program program) {
 		_name = name;
 		_parent = program;
+	}
+
+	public void accept(Visitor v) {
+		v.visit(this);
 	}
 
 	/**

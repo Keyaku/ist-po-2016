@@ -1,6 +1,11 @@
 package pex.core.expression;
 
-public abstract class Literal extends Expression {
+import pex.core.visitors.*;
+
+public abstract class Literal extends Expression implements Visitable {
+	public void accept(Visitor v) {
+		v.visit(this);
+	}
 	public Literal evaluate() {
 		return this;
 	}
