@@ -3,10 +3,10 @@ package pex.core;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.TreeMap;
+import java.util.Iterator;
 import java.io.Serializable;
 
 import pex.AppIO;
-
 
 import pex.core.expression.*;
 import pex.core.expression.Identifier;
@@ -21,6 +21,13 @@ public class Interpreter implements Serializable {
 	public Interpreter(AppIO appio) {
 		_io = appio;
 	}
+
+	// ------------- Visitor code -------------
+	// TODO: Document this method
+	public Iterator<Program> getChildIterator() {
+		return _progs.values().iterator();
+	}
+	// ----------------------------------------
 
 	// TODO: Document this method
 	public void setIdentifierValue(Identifier id, Literal value) {

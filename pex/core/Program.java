@@ -3,17 +3,40 @@ package pex.core;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 import java.io.Serializable;
 
+import pex.core.visitors.*;
 import pex.core.expression.*;
 
-public class Program implements Serializable {
+public class Program implements Serializable, Visitable {
 	private String _name = "";
 	private List<Expression> _exps = new ArrayList<Expression>();
 	private Interpreter _parent;
 
 	public Program(String name) {
 		_name = name;
+	}
+
+	// ------------- Visitor code -------------
+	// TODO: Document this method
+	public Iterator<Expression> getChildIterator() {
+		return _exps.iterator();
+	}
+
+	public void accept(Visitor v) {
+		v.visit(this);
+	}
+	// ----------------------------------------
+
+	// TODO: Document this method
+	public void setIdentifierValue(Identifier id, Literal value) {
+		_parent.setIdentifierValue(id, value);
+	}
+
+	// TODO: Document this method
+	public Literal getIdentifierValue(Identifier id) {
+		return _parent.getIdentifierValue(id);
 	}
 
 	// TODO: Document this method
@@ -45,16 +68,6 @@ public class Program implements Serializable {
 	public void set(Collection<Expression> exps) {
 		_exps.clear();
 		_exps.addAll(exps);
-	}
-
-	// TODO: Document this method
-	public void setIdentifierValue(Identifier id, Literal value) {
-		_parent.setIdentifierValue(id, value);
-	}
-
-	// TODO: Document this method
-	public Literal getIdentifierValue(Identifier id) {
-		return _parent.getIdentifierValue(id);
 	}
 
 	// TODO: Document this method
