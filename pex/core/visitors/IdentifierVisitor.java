@@ -1,9 +1,6 @@
 package pex.core.visitors;
 
-import java.util.Map;
-import java.util.TreeMap;
-import java.util.List;
-import java.util.ArrayList;
+import java.util.TreeSet;
 import java.util.Iterator;
 
 import pex.core.*;
@@ -11,7 +8,7 @@ import pex.core.expression.*;
 import pex.core.instruction.*;
 
 public class IdentifierVisitor implements Visitor {
-	private List<Identifier> _ids = new ArrayList<Identifier>();
+	private TreeSet<Identifier> _ids = new TreeSet<Identifier>();
 
 	// Implementing visitor methods
 	public void visit(Program obj) {
@@ -56,7 +53,7 @@ public class IdentifierVisitor implements Visitor {
 		id.accept(this);
 	}
 
-	public List<Identifier> getAllIdentifiers() {
+	public TreeSet<Identifier> getAllIdentifiers() {
 		return _ids;
 	}
 }
