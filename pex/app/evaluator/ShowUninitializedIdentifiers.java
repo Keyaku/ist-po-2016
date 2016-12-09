@@ -1,6 +1,6 @@
 package pex.app.evaluator;
 
-//FIXME import core classes
+import pex.core.visitors.*;
 import pex.core.Program;
 
 import pt.utl.ist.po.ui.Display;
@@ -20,6 +20,15 @@ public class ShowUninitializedIdentifiers extends ProgramCommand {
     /** @see pt.utl.ist.po.ui.Command#execute() */
     @Override
     public final void execute() {
-        //FIXME implement
+		IdentifierVisitor idVisitor = new IdentifierVisitor();
+		entity().accept(idVisitor);
+
+		Display d = new Display(title());
+
+		// FIXME: Grab all IDs from Visitor
+		// FIXME: Iterate through all IDs, and grab only those whose Literal == IntegerLiteral(0)
+		// d.addNewLine(id.getAsText());
+
+		d.display();
     }
 }
