@@ -1,6 +1,7 @@
 package pex.app.evaluator;
 
 import pex.core.visitors.*;
+import pex.core.expression.Identifier;
 import pex.core.Program;
 
 import pt.utl.ist.po.ui.Display;
@@ -24,11 +25,9 @@ public class ShowAllIdentifiers extends ProgramCommand {
 		entity().accept(idVisitor);
 
 		Display d = new Display(title());
-
-		// FIXME: Grab all IDs from Visitor
-		// FIXME: Iterate through all IDs
-		// d.addNewLine(id.getAsText());
-
+		for (Identifier id : idVisitor.getAllIdentifiers()) {
+			d.addNewLine(id.getAsText());
+		}
 		d.display();
     }
 }

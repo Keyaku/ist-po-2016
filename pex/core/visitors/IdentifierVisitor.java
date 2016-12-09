@@ -16,18 +16,19 @@ public class IdentifierVisitor implements Visitor {
 	// Implementing visitor methods
 	public void visit(Program obj) {
 		Iterator<Expression> iter = obj.getChildIterator();
-		/*
+
 		while (iter.hasNext()) {
             Expression exp = iter.next();
-
-            if (exp instanceof Identifier) {
-				Identifier id = (Identifier) exp;
-				program.setIdentifierValue(id, new IntegerLiteral(0));
-            }
+			exp.accept(this);
         }
-		*/
 	}
 
+	public void visit(ReadI obj) {
+		return;
+	}
+	public void visit(ReadS obj) {
+		return;
+	}
 	public void visit(Identifier obj) {
 		_ids.add(obj);
 	}
@@ -35,42 +36,27 @@ public class IdentifierVisitor implements Visitor {
 		return;
 	}
 	public void visit(UnaryExpression obj) {
-		if (obj.getArgument() instanceof Set) {
-			Set arg = (Set) obj.getArgument();
-			arg.accept(this);
-		}
+		obj.getArgument().accept(this);
 	}
 	public void visit(BinaryExpression obj) {
-		if (obj.getFirstArgument() instanceof Set) {
-			Set arg = (Set) obj.getFirstArgument();
-			arg.accept(this);
-		} else if (obj.getSecondArgument() instanceof Set) {
-			Set arg = (Set) obj.getSecondArgument();
-			arg.accept(this);
-		}
+		obj.getFirstArgument().accept(this);
+		obj.getSecondArgument().accept(this);
 	}
 	public void visit(TernaryExpression obj) {
-		if (obj.getFirstArgument() instanceof Set) {
-			Set arg = (Set) obj.getFirstArgument();
-			arg.accept(this);
-		} else if (obj.getSecondArgument() instanceof Set) {
-			Set arg = (Set) obj.getSecondArgument();
-			arg.accept(this);
-		} else if (obj.getThirdArgument() instanceof Set) {
-			Set arg = (Set) obj.getThirdArgument();
-			arg.accept(this);
-		}
+		obj.getFirstArgument().accept(this);
+		obj.getSecondArgument().accept(this);
 	}
 	public void visit(VariadicExpression obj) {
 		for (Expression exp : obj.getArguments()) {
-			if (exp instanceof Set) {
-				Set arg = (Set) exp;
-				arg.accept(this);
-			}
+			exp.accept(this);
 		}
 	}
 	public void visit(Set obj) {
 		Identifier id = (Identifier) obj.getFirstArgument();
 		id.accept(this);
+	}
+
+	public List<Identifier> getAllIdentifiers() {
+		return _ids;
 	}
 }

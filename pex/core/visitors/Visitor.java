@@ -9,6 +9,8 @@ public interface Visitor {
 	public void visit(Program obj);
 	public void visit(Identifier obj);
 	public void visit(Literal obj);
+	public void visit(ReadI obj);
+	public void visit(ReadS obj);
 	public void visit(UnaryExpression obj);
 	public void visit(BinaryExpression obj);
 	public void visit(TernaryExpression obj);
