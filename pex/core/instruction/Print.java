@@ -1,6 +1,7 @@
 package pex.core.instruction;
 
 import java.util.List;
+import java.lang.StringBuilder;
 
 import pex.AppIO;
 import pex.core.expression.*;
@@ -19,20 +20,20 @@ public class Print extends VariadicExpression {
 
 	public Literal evaluate() {
 		Literal retval = null;
-		String str = "";
+	 	StringBuilder str = new StringBuilder();
 
 		for (Expression exp : getArguments()) {
 			retval = exp.evaluate();
 			// FIXME: This kind of specification is highly unappreciated
 			if (retval instanceof StringLiteral) {
 				StringLiteral lit = (StringLiteral) retval;
-				str += lit.stringValue();
+				str.append(lit.stringValue());
 			} else {
-				str += retval.getAsText();
+				str.append(retval.getAsText());
 			}
 		}
 
-		_io.println(str);
+		_io.println(str.toString());
 		return retval;
 	}
 }
