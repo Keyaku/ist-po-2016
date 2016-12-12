@@ -14,7 +14,7 @@ public class Neg extends UnaryExpression {
 	}
 
 	public Literal evaluate() {
-		IntegerLiteral lit = (IntegerLiteral) getArgument();
+		IntegerLiteral lit = (IntegerLiteral) getArgument().evaluate();
 		int value = -lit.intValue();
 		return new IntegerLiteral(value);
 	}
