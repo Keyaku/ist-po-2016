@@ -53,6 +53,7 @@ public class IdentifierVisitor implements Visitor {
 	public void visit(Set obj) {
 		Identifier id = (Identifier) obj.getFirstArgument();
 		id.accept(this);
+		obj.getSecondArgument().accept(this);
 	}
 
 	public TreeSet<Identifier> getAllIdentifiers() {
