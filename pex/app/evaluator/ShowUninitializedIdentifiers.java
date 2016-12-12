@@ -25,14 +25,8 @@ public class ShowUninitializedIdentifiers extends ProgramCommand {
 		entity().accept(idVisitor);
 
 		Display d = new Display(title());
-		for (Identifier id : idVisitor.getAllIdentifiers()) {
-			Literal lit = id.evaluate();
-			if (lit instanceof IntegerLiteral) {
-				IntegerLiteral intLit = (IntegerLiteral) id.evaluate();
-				if (intLit.intValue() == 0) {
-					d.addNewLine(id.getAsText());
-				}
-			}
+		for (Identifier id : idVisitor.getUninitializedIdentifiers()) {
+			d.addNewLine(id.getAsText());
 		}
 		d.display();
     }
