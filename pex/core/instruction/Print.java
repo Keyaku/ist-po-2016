@@ -24,6 +24,9 @@ public class Print extends VariadicExpression {
 
 		for (Expression exp : getArguments()) {
 			retval = exp.evaluate();
+			if (retval == null) {
+				continue;
+			}
 			// FIXME: This kind of specification is highly unappreciated
 			if (retval instanceof StringLiteral) {
 				StringLiteral lit = (StringLiteral) retval;
