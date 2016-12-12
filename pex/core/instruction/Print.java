@@ -27,13 +27,7 @@ public class Print extends VariadicExpression {
 			if (retval == null) {
 				continue;
 			}
-			// FIXME: This kind of specification is highly unappreciated
-			if (retval instanceof StringLiteral) {
-				StringLiteral lit = (StringLiteral) retval;
-				str.append(lit.stringValue());
-			} else {
-				str.append(retval.getAsText());
-			}
+			str.append(retval.stringValue());
 		}
 
 		_io.println(str.toString());

@@ -21,4 +21,8 @@ public class IntegerLiteral extends Literal {
 	public int intValue() {
 		return _value;
 	}
+
+	public String stringValue() {
+		return getAsText();
+	}
 }
