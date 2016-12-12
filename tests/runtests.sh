@@ -173,7 +173,6 @@ function test_dir {
 	fi
 
 	# Run tests
-	local retval=$RET_success
 	local import_flag=""
 	local fail_count=0
 	local total_count=0
@@ -197,7 +196,6 @@ function test_dir {
 			continue
 	    elif [ -s ${x%.in}.diff ]; then
 	        print_failure "$test_name. See file ${test_name%.in}.diff"
-			retval=$RET_error
 			fail_count=$(($fail_count + 1))
 	    else
 			if [ $BOOL_showAll == true ]; then
@@ -211,7 +209,7 @@ function test_dir {
 		print_failure "Failed $fail_count / $total_count tests."
 	fi
 
-	return $retval
+	return $fail_count
 }
 
 function cleanup {
@@ -237,14 +235,11 @@ function main {
 		done
 	else
 		test_dir "$DIR_tests"
+		fail_count=$?
 	fi
 	cleanup
 
-	if [ $fail_count -gt 0 ]; then
-		retval=$RET_error
-	fi
-
-	exit $retval
+	exit $fail_count
 }
 
 # Script starts HERE
