@@ -72,7 +72,7 @@ public class Program implements Serializable, Visitable {
 
 	// TODO: Document this method
 	public Literal execute() {
-		Literal retval = null;
+		Literal retval = new IntegerLiteral(0);
 		for (Expression line : _exps) {
 			retval = line.evaluate();
 		}

@@ -29,7 +29,11 @@ public class Identifier extends Expression implements Comparable<Identifier>, Vi
 	** @return Value of the Literal
 	*/
 	public Literal evaluate() {
-		return _parent.getIdentifierValue(this);
+		Literal retval = _parent.getIdentifierValue(this);
+		if (retval == null) {
+			retval = new IntegerLiteral(0);
+		}
+		return retval;
 	}
 
 	public int compareTo(Identifier i) {
