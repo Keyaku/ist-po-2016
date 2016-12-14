@@ -10,14 +10,6 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 
-# Objects
-bld/pex
-bld/pp
-bld/saved*
-bld/ex33.pex
-bld/prim.tex
-bld/*.jar
-
 # Testing files
 *.outhyp
 *.diff
@@ -27,3 +19,12 @@ bld/*.jar
 *.doc*
 *.xls*
 *.ppt*
+
+# Objects
+bld/pex
+bld/pp
+bld/import
+bld/saved*
+bld/*.jar
+bld/*.pex
+bld/*.tex

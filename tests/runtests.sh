@@ -147,8 +147,10 @@ function set_env {
 	cd "$DIR_javaApp"
 
 	# Copying exclusive files to App's directory if they don't exist
-	copy_to_app_dir "$DIR_script/prim.tex"
-	copy_to_app_dir "$DIR_script/ex33.pex"
+	local FILE_import=( "import" "prim.tex" "prim3.tex" "ex33.pex" "ex34.pex" )
+	for impFile in ${FILE_import[@]}; do
+		copy_to_app_dir "$DIR_script/$impFile"
+	done
 }
 
 function copy_to_app_dir {
