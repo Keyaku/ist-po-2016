@@ -9,7 +9,7 @@ import pex.core.instruction.*;
 
 public class IdentifierVisitor implements Visitor {
 	private TreeSet<Identifier> _ids = new TreeSet<Identifier>();
-	private TreeSet<Identifier> _uninitialized = new TreeSet<Identifier>();
+	private TreeSet<Identifier> _initialized = new TreeSet<Identifier>();
 
 	// Implementing visitor methods
 	public void visit(Program obj) {
@@ -52,8 +52,9 @@ public class IdentifierVisitor implements Visitor {
 	}
 	public void visit(Set obj) {
 		Identifier id = (Identifier) obj.getFirstArgument();
-		id.accept(this);
 		obj.getSecondArgument().accept(this);
+		id.accept(this);
+		_initialized.add(id);
 	}
 
 	public TreeSet<Identifier> getAllIdentifiers() {
@@ -61,6 +62,8 @@ public class IdentifierVisitor implements Visitor {
 	}
 
 	public TreeSet<Identifier> getUninitializedIdentifiers() {
-		return _uninitialized;
+		TreeSet<Identifier> uninitialized = new TreeSet<Identifier>(_ids);
+		uninitialized.removeAll(_initialized);
+		return uninitialized;
 	}
 }
