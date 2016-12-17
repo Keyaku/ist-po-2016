@@ -24,6 +24,6 @@ swing:
 	cd bld; java -Dui=swing $(APPDIR); cd ..
 
 clean:
-	rm -rf *.class $(OBJDIR)/* $(DOCDIR)/*
+	rm -rf $(OBJDIR)/* $(DOCDIR)/* `find $(PACKAGEDIR) -name "*.class"`
 
 .PHONY: all clean docs zip
