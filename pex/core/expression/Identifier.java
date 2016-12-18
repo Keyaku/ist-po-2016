@@ -7,7 +7,10 @@ public class Identifier extends Expression implements Comparable<Identifier>, Vi
 	private String _name;
 	private Program _parent;
 
-	public Identifier(String name, Program program) {
+	public Identifier(String name, Program program) throws InvalidIdentifierException {
+		if (!isNameValid(name)) {
+			throw new InvalidIdentifierException(name);
+		}
 		_name = name;
 		_parent = program;
 	}
@@ -40,10 +43,10 @@ public class Identifier extends Expression implements Comparable<Identifier>, Vi
 		return getAsText().compareTo(i.getAsText());
 	}
 
-	private Boolean isNameValid() {
-		if (Character.isDigit(_name.charAt(0))) {
+	private Boolean isNameValid(String name) {
+		if (Character.isDigit(name.charAt(0))) {
 			return false;
 		}
-		return _name.length() > 0;
+		return name.length() > 0;
 	}
 }

@@ -81,7 +81,11 @@ public class NewParser {
             return new StringLiteral(_tokenizer.sval);
 
         case StreamTokenizer.TT_WORD:
-            return new Identifier(_tokenizer.sval, _program);
+		try {
+			return new Identifier(_tokenizer.sval, _program);
+		} catch (InvalidIdentifierException e) {
+			throw new InvalidExpressionException(_tokenizer.lineno());
+		}
 
         case '(':
             Expression exp = parseCompositeExpression();
@@ -109,8 +113,7 @@ public class NewParser {
     }
 
     // the opening '(' was already processed
-    private CompositeExpression parseCompositeExpression() throws IOException, BadNumberException, UnknownOperationException, MissingClosingParenthesisException,
-                                                                EndOfInputException, InvalidExpressionException {
+    private CompositeExpression parseCompositeExpression() throws IOException, BadNumberException, UnknownOperationException, MissingClosingParenthesisException, EndOfInputException, InvalidExpressionException {
         int token = _tokenizer.nextToken();
 
         if (token != StreamTokenizer.TT_WORD) {

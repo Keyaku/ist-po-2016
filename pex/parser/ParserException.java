@@ -5,36 +5,36 @@ package pex.parser;
  */
 public class ParserException extends Exception {
 
-  /** Serial number for serialization. */
-  private static final long serialVersionUID = 201608241029L;
+	/** Serial number for serialization. */
+	private static final long serialVersionUID = 201608241029L;
 
-  /**
-   * Default constructor
-   */
-  public ParserException() {
-    // do nothing
-  }
+	/**
+	* Default constructor
+	*/
+	public ParserException() {
+		// do nothing
+		}
 
-  /**
-   * @param description
-   * @param cause
-   */
-    public ParserException(String description, Exception cause) {
-        super(description, cause);
-  }
+	/**
+	* @param description
+	* @param cause
+	*/
+	public ParserException(String description, Exception cause) {
+	    super(description, cause);
+	}
 
-  /**
-   * @param description
-   */
-  public ParserException(String description) {
-    super(description);
-  }
+	/**
+	* @param description
+	*/
+	public ParserException(String description) {
+		super(description);
+	}
 
-  /**
-   * @param cause
-   */
-  public ParserException(Exception cause) {
-    super(cause);
-  }
+	/**
+	* @param cause
+	*/
+	public ParserException(Exception cause) {
+		super(cause);
+	}
 
 }
