@@ -1,9 +1,9 @@
-package pex.core.expression;
+package pex.parser;
 
 /**
  * Class for representing a syntax error problem: expression does not follow syntax.
  */
-public class InvalidIdentifierException extends Exception {
+public class InvalidIdentifierException extends ParserException {
     /** Serial number for serialization. */
     private static final long serialVersionUID = 201612181309L;
 
@@ -17,21 +17,6 @@ public class InvalidIdentifierException extends Exception {
         super("Invalid identifier name " + name);
         _name = name;
     }
-
-	/**
-	* @param description
-	* @param cause
-	*/
-	public InvalidIdentifierException(String name, Exception cause) {
-	    super("Invalid identifier name " + name, cause);
-	}
-
-	/**
-	* @param cause
-	*/
-	public InvalidIdentifierException(Exception cause) {
-		super(cause);
-	}
 
     /**
      * @return identifier name

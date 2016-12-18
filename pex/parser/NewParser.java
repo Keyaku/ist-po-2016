@@ -30,7 +30,7 @@ public class NewParser {
         _tokenizer.eolIsSignificant(false);
     }
 
-    public Program parseFile(String fileName, String programName) throws BadSourceException, BadNumberException, InvalidExpressionException, MissingClosingParenthesisException, UnknownOperationException, EndOfInputException  {
+    public Program parseFile(String fileName, String programName) throws BadSourceException, BadNumberException, InvalidExpressionException, InvalidIdentifierException, MissingClosingParenthesisException, UnknownOperationException, EndOfInputException  {
         _program = new Program(programName);
 
         try (FileReader reader = new FileReader(fileName)) {
@@ -51,7 +51,7 @@ public class NewParser {
         return _program;
     }
 
-    public Expression parseString(String expression, Program program) throws BadSourceException, BadNumberException, InvalidExpressionException, MissingClosingParenthesisException, UnknownOperationException, EndOfInputException {
+    public Expression parseString(String expression, Program program) throws BadSourceException, BadNumberException, InvalidExpressionException, InvalidIdentifierException, MissingClosingParenthesisException, UnknownOperationException, EndOfInputException {
         _program = program;
 
         try (StringReader reader = new StringReader(expression)) {
@@ -63,7 +63,7 @@ public class NewParser {
         }
     }
 
-    private Expression parseExpression() throws IOException, BadNumberException, InvalidExpressionException, MissingClosingParenthesisException, UnknownOperationException, EndOfInputException {
+    private Expression parseExpression() throws IOException, BadNumberException, InvalidExpressionException, InvalidIdentifierException, MissingClosingParenthesisException, UnknownOperationException, EndOfInputException {
         int token = _tokenizer.nextToken();
 
         switch (token) {
@@ -81,11 +81,10 @@ public class NewParser {
             return new StringLiteral(_tokenizer.sval);
 
         case StreamTokenizer.TT_WORD:
-		try {
+			if (Character.isDigit(_tokenizer.sval.charAt(0))) {
+				throw new InvalidIdentifierException(_tokenizer.sval);
+			}
 			return new Identifier(_tokenizer.sval, _program);
-		} catch (InvalidIdentifierException e) {
-			throw new InvalidExpressionException(_tokenizer.lineno());
-		}
 
         case '(':
             Expression exp = parseCompositeExpression();
@@ -102,8 +101,7 @@ public class NewParser {
     }
 
     // Return value cannot be null
-    private Expression parseArgument() throws IOException, BadNumberException, UnknownOperationException,
-                                              MissingClosingParenthesisException, EndOfInputException, InvalidExpressionException {
+    private Expression parseArgument() throws IOException, BadNumberException, UnknownOperationException, MissingClosingParenthesisException, EndOfInputException, InvalidExpressionException, InvalidIdentifierException {
         Expression exp = parseExpression();
         if (exp == null) {
             throw new EndOfInputException();
@@ -113,7 +111,7 @@ public class NewParser {
     }
 
     // the opening '(' was already processed
-    private CompositeExpression parseCompositeExpression() throws IOException, BadNumberException, UnknownOperationException, MissingClosingParenthesisException, EndOfInputException, InvalidExpressionException {
+    private CompositeExpression parseCompositeExpression() throws IOException, BadNumberException, UnknownOperationException, MissingClosingParenthesisException, EndOfInputException, InvalidExpressionException, InvalidIdentifierException {
         int token = _tokenizer.nextToken();
 
         if (token != StreamTokenizer.TT_WORD) {
