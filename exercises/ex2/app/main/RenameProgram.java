@@ -32,6 +32,8 @@ public class RenameProgram extends Command<App> {
 			return;
 		}
 
+		entity().getInterpreter().removeProgram(p);
 		p.setName(newName);
+		entity().getInterpreter().addProgram(p);
     }
 }
