@@ -18,7 +18,7 @@ zip: #$(DOCDIR)
 	jar cvf $(ZIPFILE) $(EXEC) #$(DOCDIR)/*.html
 
 run:
-	cd bld; java $(APPDIR); cd ..
+	cd bld; java $(IMPORT) $(APPDIR); cd ..
 
 swing:
 	cd bld; java -Dui=swing $(APPDIR); cd ..
