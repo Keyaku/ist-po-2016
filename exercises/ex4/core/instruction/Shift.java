@@ -13,9 +13,9 @@ public class Shift extends TernaryExpression {
 	}
 
 	public Literal evaluate() {
-		IntegerLiteral left = getFirstArgument().evaluate();
-		IntegerLiteral number = getSecondArgument().evaluate();
-		IntegerLiteral amount = getThirdArgument().evaluate();
+		IntegerLiteral left = (LiteralInteger) getFirstArgument().evaluate();
+		IntegerLiteral number = (LiteralInteger) getSecondArgument().evaluate();
+		IntegerLiteral amount = (LiteralInteger) getThirdArgument().evaluate();
 
 		int retval = number.intValue();
 		if (left.intValue() == 0) { // if shifting left
