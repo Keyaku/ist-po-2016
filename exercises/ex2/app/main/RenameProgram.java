@@ -3,6 +3,7 @@ package pex.app.main;
 import java.io.IOException;
 
 import pex.app.App;
+import pex.core.Program;
 
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Display;
